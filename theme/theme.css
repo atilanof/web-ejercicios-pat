@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap');
+
+.footnote-definition p, blockquote em {
+  font-family: 'Signika Negative', sans-serif, serif;
+}
+
+.part-title {
+  font-weight: bold;
+  font-size: 175%;
+  font-variant-caps: small-caps;
+}
+
+.chapter li a.active, .chapter li a:hover {
+	color: #1f8cff;
+}
+
+.chapter li {
+  color: inherit;
+}
+
+.chapter>.chapter-item {
+  font-weight: 550;
+  font-size: 120%;
+}
+
+.chapter>.chapter-item:first-child {
+  font-weight: bold;
+  font-size: 200%;
+  font-variant-caps: small-caps;
+}
+
+td>ol,
+td>ul {
+  margin: 0;
+  padding: 0;
+  padding-left: inherit;
+}
+
+main>section,
+main>pre,
+main h1,
+main h2,
+main h3 {
+  clear: both;
+}
+
+h2, h3 {
+  margin-top: 1.5em;
+}
+
+li.unchecked::marker {
+  content: '✘  ' counter(li, decimal) '. ';
+}
+
+li.checked::marker {
+  content: '✔  ' counter(li, decimal) '. ';
+  color: var(--fg);
+}
+
+li.question::marker {
+  content: '✏︎  ' counter(li, decimal) '. ';
+}
+
+li.answer::marker {
+  content: '✎  ' counter(li, decimal) '. ';
+}
+
+li.unchecked, li.question, li.answer {
+  counter-increment: li;
+}
+
+li.checked {
+  counter-increment: li;
+  text-decoration-line: line-through;
+  text-decoration-thickness: 2px;
+  color: gray;
+}
+
+hr {
+  margin: 1.2em 0 1.2em 0;
+}
+
+[id="1"].footnote-definition {
+  border-top: 1px var(--fg) dotted;
+  margin-top: 40px;
+  padding-top: 12px;
+}
+
+textarea {
+  width: 630px;
+  resize: none;
+  overflow: hidden;
+  min-height: 50px;
+  margin-bottom: 10px;
+}
+
+li.answer > textarea {
+  display: block;
+}
+
+li.question > textarea {
+  display: none;
+}
+
+.highlight {
+  font-weight: bolder;
+}
+
+.lowlight * {
+  opacity: 0.5;
+}

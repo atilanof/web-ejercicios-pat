@@ -1,0 +1,751 @@
+<!DOCTYPE HTML>
+<html lang="es" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Programación de aplicaciones telemáticas</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Ejercicios y prácticas">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/theme.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introducción</a></li><li class="chapter-item expanded "><div>Git</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="intro/git/practica.html">Práctica</a></li><li class="chapter-item expanded "><a href="intro/git/prerrequisitos.html">Prerrequisitos</a></li><li class="chapter-item expanded "><a href="intro/git/repositorio.html">Repositorio</a></li><li class="chapter-item expanded "><a href="intro/git/ramas.html">Ramas</a></li><li class="chapter-item expanded "><a href="intro/git/gitflow.html">Git flow</a></li><li class="chapter-item expanded "><a href="intro/git/ci.html">CI</a></li><li class="chapter-item expanded "><a href="intro/git/cd.html">CD</a></li><li class="chapter-item expanded "><a href="intro/git/cicd.html">CI/CD</a></li></ol></li><li class="chapter-item expanded "><div>Docker</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="intro/docker/practica.html">Práctica</a></li><li class="chapter-item expanded "><a href="intro/docker/prerrequisitos.html">Prerrequisitos</a></li><li class="chapter-item expanded "><a href="intro/docker/imagen.html">Imagen</a></li><li class="chapter-item expanded "><a href="intro/docker/contenedor.html">Contenedor</a></li><li class="chapter-item expanded "><a href="intro/docker/orquestacion.html">Orquestación</a></li><li class="chapter-item expanded "><a href="intro/docker/entorno.html">Entorno desarrollo</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Tema 1</li><li class="chapter-item expanded "><div>Paradigmas de programación</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tema1/paradigmas/estructurada.html">Estructurada</a></li><li class="chapter-item expanded "><a href="tema1/paradigmas/procedural.html">Imperativa - Procedural</a></li><li class="chapter-item expanded "><a href="tema1/paradigmas/objetos.html">Imperativa - Orientada a objetos</a></li><li class="chapter-item expanded "><a href="tema1/paradigmas/funcional.html">Declarativa - Funcional</a></li><li class="chapter-item expanded "><a href="tema1/paradigmas/reactiva.html">Declarativa - Reactiva</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programación de aplicaciones telemáticas</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/apicai/web-ejercicios-pat-2023" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introducción"><a class="header" href="#introducción">Introducción</a></h1>
+<p>Ejemplos de código y prácticas para del curso de &quot;Programación de Aplicaciones Telemáticas&quot;. Algunos de ellos pueden ejecutarse desde esta misma web (los basados en Javascript, CSS y HTML). El resto se puede ejecutar desde <a href="https://github.com/features/codespaces">Github Codespaces</a> o bien en local usando contenedores <a href="https://www.docker.com/">Docker</a>. Para la descarga y entrega de prácticas se utilizará <a href="https://git-scm.com/">Git</a>.</p>
+<p>Las preguntas de las prácticas pueden contestarse desde la misma web, haciendo doble click sobre ellas, y luego imprimiendo la página para entregarlas como PDF. También se puede marcar los pasos completados en cada práctica al hacer doble click sobre ellos.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git"><a class="header" href="#git">Git</a></h1>
+<p><strong>Git</strong> es un sistema de control de versiones (VCS) basado en el uso de ramas para gestionar los cambios. <strong>Github</strong> es un servicio de alojamiento de código que usa Git como VCS y sobre el que se ofrecen otras funcionalidades relacionadas con el desarrollo colaborativo de software.</p>
+<h2 id="práctica-objetivos"><a class="header" href="#práctica-objetivos">Práctica: objetivos</a></h2>
+<ul>
+<li>
+<p>Usar Git desde la línea de comandos<sup class="footnote-reference"><a href="#1">1</a></sup> para gestionar los cambios.</p>
+</li>
+<li>
+<p>Usar Github para simular un flujo de trabajo colaborativo<sup class="footnote-reference"><a href="#2">2</a></sup> configurado con una integración y despliegue continuos (CI/CD)<sup class="footnote-reference"><a href="#3">3</a></sup>.</p>
+</li>
+<li>
+<p>Crear una página web estática y publicarla en Internet<sup class="footnote-reference"><a href="#4">4</a></sup>.</p>
+</li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Usando el entorno de desarrollo en la nube <a href="https://github.com/features/codespaces">Github-Codespaces</a>.</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>Basado en el propuesto por <a href="https://docs.github.com/en/get-started/quickstart/github-flow">GitHub-Flow</a>.</p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
+<p>Usando las <a href="https://github.com/features/actions">GitHub-Actions</a>.</p>
+</div>
+<div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
+<p>Alojada en <a href="https://pages.github.com/">Github-Pages</a>.</p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git-1"><a class="header" href="#git-1">Git</a></h1>
+<h2 id="prerrequisitos"><a class="header" href="#prerrequisitos">Prerrequisitos</a></h2>
+<ul>
+<li>
+<p>Para hacer la práctica es necesaria una cuenta en <a href="https://github.com/">github.com</a>.</p>
+</li>
+<li>
+<p>Basta con una cuenta gratuita, que dispone de 60h mensuales de uso de Codespaces<sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<blockquote>
+<p>⚠️ <strong>Importante</strong>: <em>hay que parar el codespace una vez se deja de usar para evitar consumir minutos innecesariamente. Por defecto tiene un tiempo de inactividad de 30 minutos tras el cual se para automáticamente. Es recomendable reducirlo a 15 minutos<sup class="footnote-reference"><a href="#2">2</a></sup>.</em></p>
+</blockquote>
+</li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Para comprobar el consumo ir a <a href="https://github.com/settings/billing">Billing</a> <code>➜</code> Codespaces</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>El tiempo de inactividad se puede reducir en <a href="https://github.com/settings/codespaces#default-idle-timeout-header">Codespaces setting</a> <code>➜</code> Default idle timeout</p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git-2"><a class="header" href="#git-2">Git</a></h1>
+<h2 id="repositorio"><a class="header" href="#repositorio">Repositorio</a></h2>
+<p>Los repositorios alojan el código junto con la metainformación asociada al histórico de cambios. Github proporciona uno basado en el VCS Git como un servicio en la nube.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<p>Desde tu cuenta personal de Github crea un nuevo repositorio <strong>público</strong> llamado <code>ci-cd</code> inicializado con un fichero <code>README.md</code>.</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Desde el nuevo repo <code>https://github.com/{usuario}/ci-cd</code> cree un nuevo Codespace. Una vez haya arrancado el entorno, desde su terminal teclee:</p>
+<pre><code class="language-bash">cd /tmp
+git clone https://github.com/{usuario}/ci-cd
+ls ci-cd
+cat ci-cd/README.md
+</code></pre>
+<blockquote>
+<p>🔍 <strong>Nota:</strong> <em>Cambia</em> <code>{usuario}</code> <em>por tu nombre de usuario en Github.</em></p>
+</blockquote>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>¿Cuál es la URL de tu repositorio?</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>¿Para qué vale <code>git clone</code>? ¿en qué se diferencia de un &quot;fork&quot; del repo? ¿y de <code>git init</code>?</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git-3"><a class="header" href="#git-3">Git</a></h1>
+<h2 id="ramas"><a class="header" href="#ramas">Ramas</a></h2>
+<p>Los cambios en Git se realizan utilizando ramas. Las ramas representan una línea de desarrollo independiente dentro del repo. La rama inicial suele llamarse <code>main</code> (o <code>master</code>). Los cambios en una rama se realizan en 3 pasos: <code>① add ➜ ② commit ➜ ③ push</code>.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<p>Desde el Codespace anterior y usando el editor crea un nuevo directorio <code>src</code> y un fichero <code>index.html</code> dentro de él con el siguiente contenido:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Desde el terminal del Codespace teclea:</p>
+<pre><code class="language-bash">cd /workspaces/ci-cd
+git status
+git add .
+git commit -m &quot;feat: homepage&quot;
+git push origin main
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Comprueba que el nuevo directorio/fichero se encuentra ahora en el repo remoto (<code>https://github.com/{usuario}/ci-cd</code>).</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>¿Para qué han valido cada uno de los comandos <code>git</code> anteriores?</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git-4"><a class="header" href="#git-4">Git</a></h1>
+<h2 id="git-flow"><a class="header" href="#git-flow">Git flow</a></h2>
+<p>Es el convenio elegido por el equipo de desarrollo para organizar el uso de las ramas del repo. Github-Flow es uno de ellos y propone: ❶ la rama <code>main</code> siempre tiene el código válido y desplegable, ❷ los cambios se hacen en ramas nuevas desde <code>main</code>, ❸ las Pull Requests (PR) permiten solicitar la incorporación de los cambios en <code>main</code>, ❹ tras la revisión de la PR, los cambios se mezclan en <code>main</code>.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Desde el terminal del Codespace anterior teclea:
+<pre><code class="language-bash">git checkout main
+git checkout -b feat/add-body
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+Desde el editor del Codespace actualiza la línea <code>&lt;body&gt;&lt;p&gt;Hola {usuario}&lt;/p&gt;&lt;/body&gt;</code> del fichero <code>src/index.html</code>.</li>
+<li><input disabled="" type="checkbox"/>
+Desde el terminal del Codespace teclea:
+<pre><code class="language-bash">git add .
+git commit -m &quot;feat: add body&quot;
+git push origin feat/add-body
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+Crea una nueva PR de <code>feat/add-body ➜ main</code> en Github (<code>https://github.com/{usuario}/ci-cd/pull/new/feat/add-body</code>), revísala y mezcla.</li>
+<li><input disabled="" type="checkbox"/>
+Desde el terminal del Codespace teclea:
+<pre><code class="language-bash">git checkout main
+git pull origin main
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+¿Para qué han valido los comandos <code>git checkout -b</code>, <code>git checkout</code> y <code>git pull</code>?</li>
+<li><input disabled="" type="checkbox"/>
+¿Cuáles son los beneficios de usar este flujo de trabajo en el contexto de un desarrollo colaborativo?</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git-5"><a class="header" href="#git-5">Git</a></h1>
+<h2 id="ci"><a class="header" href="#ci">CI</a></h2>
+<p>La integración continua consiste en la ejecución automática de pruebas y la obtención de sus informes cada vez que cambia el código.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<p>Crea un nuevo workflow llamado <code>ci.yml</code> desde las Github-Actions del repo (<code>https://github.com/{usuario}/ci-cd/actions/new</code>) <code>➜</code> &quot;set up a workflow yourself&quot; con el siguiente contenido:</p>
+<pre><code class="language-yaml">name: CI
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+jobs:
+  html-validator:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: HTML validator
+      run: docker run --rm -v ${{ github.workspace }}/src:/src ghcr.io/validator/validator:latest vnu /src/index.html
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Guarda los cambios en el repo dando a &quot;Start commit&quot; <code>➜</code> &quot;Commit new file&quot; y comprueba el resultado de la ejecución en las Actions del repo (<code>https://github.com/{usuario}/ci-cd/actions</code>).</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>¿Por qué se ha disparado la ejecución de la CI?</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>¿Cuál ha sido el resultado de la ejecución de la CI y qué objetivo ha tenido?</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git-6"><a class="header" href="#git-6">Git</a></h1>
+<h2 id="cd"><a class="header" href="#cd">CD</a></h2>
+<p>El despliegue continuo permite instalar automáticamente los cambios una vez que estos han superado todas las pruebas.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<p>Entra en la configuración de Github-Pages del repo (<code>https://github.com/{usuario}/ci-cd/settings/pages</code>) <code>➜</code> &quot;Source&quot; <code>➜</code> &quot;GitHub Actions&quot; <code>➜</code> &quot;Static HTML&quot; <code>➜</code> &quot;Configure&quot;. Renombra el workflow a <code>cd.yml</code> y modifica las siguientes propiedades de su contenido:</p>
+<ul>
+<li><code>name: CD</code></li>
+<li><code>path: './src'</code></li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Guarda los cambios en el repo dando a &quot;Start commit&quot; <code>➜</code> &quot;Commit new file&quot; y comprueba el resultado de la ejecución en las Actions del repo (<code>https://github.com/{usuario}/ci-cd/actions</code>).</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Comprueba que la página web se puede ver desde <code>https://{usuario}.github.io/ci-cd/</code>.</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>¿Por qué se ha disparado la ejecución de la CI y del CD?</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>¿Qué problema ves en que se haya ejecutado correctamente el CD cuando ha fallado la CI?</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git-7"><a class="header" href="#git-7">Git</a></h1>
+<h2 id="cicd"><a class="header" href="#cicd">CI/CD</a></h2>
+<p>Combinando ambos procesos es posible automatizar los despliegues de nuevas versiones con la certeza de que no tienen fallos y que, en caso de haberlos, se impida la integración de los cambios y su despliegue.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Modifica esta sección del workflow de CI con:
+<pre><code class="language-yaml">on:
+  pull_request:
+    branches: [ &quot;main&quot; ]
+  workflow_call:
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+Modifica el comienzo de esta sección del workflow de CD con:
+<pre><code class="language-yaml">jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+  deploy:
+    needs: [ci]
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+Sube los cambios y comprueba el resultado en las Actions del repo.</li>
+<li><input disabled="" type="checkbox"/>
+¿Puedes explicar los cambios anteriores a partir del resultado observado?<hr/></li>
+<li><input disabled="" type="checkbox"/>
+Modifica el fichero <code>./src/index.html</code> para que la CI pase, sube los cambios y comprueba el resultado en las Actions del repo y en la web desplegada.</li>
+<li><input disabled="" type="checkbox"/>
+¿Qué Actions se ejecutan al hacer una PR? ¿qué Actions se ejecutan al mezclar cambios en <code>main</code>?</li>
+<li><input disabled="" type="checkbox"/>
+¿Por qué representa un problema subir directamente los cambios a <code>main</code> en lugar de usar una PR?<hr/></li>
+<li><input disabled="" type="checkbox"/>
+Entra en las reglas de protección de ramas del repo en Github (<code>https://github.com/{usuario}/scores/settings/branches</code>) <code>➜</code> &quot;Add rule&quot; y usa estos valores:
+<ul>
+<li>Branch name pattern: <code>main</code></li>
+<li>☑️ Require a pull request before merging</li>
+<li>☑️ Require status checks to pass before merging</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"/>
+¿Qué ocurre ahora al intentar hacer cambios directamente en <code>main</code>? ¿y al hacer una PR conteniendo un cambio que no pasa la CI?</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker"><a class="header" href="#docker">Docker</a></h1>
+<p><strong>Docker</strong> es el gestor de contenedores más popular. Un <strong>contenedor</strong> es un paquete que incluye todo lo necesario para ejecutar de manera independiente un programa. Los contenedores se ejecutan<sup class="footnote-reference"><a href="#1">1</a></sup> de forma aislada y virtualizada de modo que su programa solo ve los recursos asignados al contenedor. Esto permite distribuir<sup class="footnote-reference"><a href="#2">2</a></sup> el software garantizando el mismo comportamiento en todos los entornos, orquestar el despliegue de varios contenedores conformando un servicio y automatizar la asignación 
+de recursos en función de la carga (escalado horizontal)<sup class="footnote-reference"><a href="#3">3</a></sup>.</p>
+<h2 id="práctica-objetivos-1"><a class="header" href="#práctica-objetivos-1">Práctica: objetivos</a></h2>
+<ul>
+<li>Usar Docker desde la línea de comandos para crear imágenes y arrancarlas localmente como contenedores.</li>
+<li>Usar Docker Compose para montar un entorno de desarrollo local que nos permita hacer lo mismo que en la práctica de Git (que usaba el entorno de desarrollo en la nube Github-Codespaces).</li>
+<li>Tener un entorno de desarrollo local con las herramientas necesarias para las prácticas (<code>git</code>, <code>java</code>, validadores, servidores, etc.).</li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Existen varios &quot;runtimes&quot;, el que usa Docker está basado originalmente en <a href="https://containerd.io/">containerd</a>.</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>El formato en que se distribuye se llama imagen, y el que usa Docker está basado en <a href="https://opencontainers.org/">OCI</a>.</p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
+<p><a href="https://kubernetes.io/">Kubernetes</a> es la plataforma más popular que gestiona la infraestructura hardware subyacente como un único recurso computacional que corre contenedores.</p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker-1"><a class="header" href="#docker-1">Docker</a></h1>
+<h2 id="prerrequisitos-1"><a class="header" href="#prerrequisitos-1">Prerrequisitos</a></h2>
+<ul>
+<li>
+<p>Haber hecho la <strong>práctica de Git</strong> y tener público el repo <code>https://github.com/{usuario}/ci-cd</code>.</p>
+</li>
+<li>
+<p>Instalar <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>. </p>
+</li>
+<li>
+<p>Una línea de comandos: PowerShell en Windows o cualquier terminal en Linux/MacOS.</p>
+<blockquote>
+<p>🔍 <strong>Nota:</strong> <em>Utilizar las herramientas por línea de comandos ayuda a entenderlas mejor, y al mismo tiempo permiten desarrollar scripts para automatizar tareas relacionadas en caso de necesidad.</em></p>
+</blockquote>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker-2"><a class="header" href="#docker-2">Docker</a></h1>
+<h2 id="imagen"><a class="header" href="#imagen">Imagen</a></h2>
+<p>Para crear una imagen que contenga las librerías, herramientas, configuraciones, etc. necesarias para ejecutar nuestro programa se utiliza un <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a>. Los Dockerfile parten de una imagen padre base sobre la que se instalan las dependencias necesarias. Las imágenes públicas se alojan en un &quot;registry&quot; del que se descargan si no están cacheadas localmente.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Crea el fichero <code>practicas/Dockerfile</code> con este contenido:
+<pre><code class="language-bash">FROM alpine
+RUN apk add --no-cache bash openssh git git-bash-completion
+RUN git clone https://github.com/magicmonty/bash-git-prompt.git /root/.bash-git-prompt --depth=1
+RUN echo -e &quot;source /usr/share/bash-completion/completions/git\nsource /root/.bash-git-prompt/gitprompt.sh&quot; &gt; /root/.bashrc
+CMD [&quot;/bin/bash&quot;]
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+Con Docker arrancando, ejecuta en un terminal:
+<pre><code class="language-bash">cd {ruta}/practicas
+docker build -t git .
+docker images
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+Explica qué hacen las instrucciones del Dockerfile. ¿Qué software estará disponible en la imagen?</li>
+<li><input disabled="" type="checkbox"/>
+¿Qué hacen los comandos <code>docker</code> anteriores?</li>
+<li><input disabled="" type="checkbox"/>
+Las imágenes se identifican así: <code>registry/repository:tag</code>, ¿cuál es el &quot;registry&quot;, &quot;repository&quot; y &quot;tag&quot; de la imagen padre descargada?</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker-3"><a class="header" href="#docker-3">Docker</a></h1>
+<h2 id="contenedor"><a class="header" href="#contenedor">Contenedor</a></h2>
+<p>Los contenedores se arrancan a partir del nombre de la imagen. Los contenedores ejecutan un único proceso y cuando éste termina se detiene el contenedor. Los contenedores parados se pueden volver a arrancar sin perder sus datos entre reinicios. Además, pueden compartir ficheros con el SO anfitrión.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<p>Con Docker arrancando, ejecuta desde un terminal:</p>
+<pre><code class="language-bash">docker run --name git -v $(pwd):/practicas:rw -it git
+# ... dentro del contenedor ...
+cd /practicas
+git clone https://github.com/{usuario}/ci-cd
+exit
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Comprueba que también se ha creado <code>practicas/ci-cd/</code> en tu SO anfitrión.</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Ejecuta en el terminal anterior: </p>
+<pre><code class="language-bash">docker ps --all
+docker start -ai git
+# ... dentro del contenedor de nuevo ...
+exit
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Explica qué hace concretamente el <code>docker run</code> utilizado. ¿Cuál es el proceso que ejecuta el contenedor al arrancarse? ¿por qué necesitamos el modo <code>rw</code> y no basta con <code>ro</code>?</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>¿Por qué <code>docker ps</code> dice que el contenedor está parado?</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>¿Por qué en la última parte tenemos que usar <code>docker start</code> en vez de <code>docker run</code>? ¿por qué no necesitamos especificar la carpeta compartida con <code>docker start</code>?</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker-4"><a class="header" href="#docker-4">Docker</a></h1>
+<h2 id="orquestación"><a class="header" href="#orquestación">Orquestación</a></h2>
+<p>Un servicio real suele componerse de varios componentes (servidores web, backends, bases de datos, brokers de mensajes, etc.). En una arquitectura de microservicios esos componentes se despliegan como contenedores, y es necesario coordinar su arranque y comunicación. En un entorno real se utiliza <a href="https://kubernetes.io/">Kubernetes</a>, pero para probar en un entorno local se suele usar <a href="https://docs.docker.com/compose/">Docker Compose</a>.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<p>Crea el fichero <code>practicas/ci-cd/docker-compose.yml</code> con este contenido:</p>
+<pre><code class="language-yaml">version: &quot;3.9&quot;
+name: ci-cd
+services:
+  vnu:
+    image: ghcr.io/validator/validator:latest
+    container_name: vnu
+    ports: [ &quot;8888:8888&quot; ]
+  web:
+    image: nginx:alpine
+    container_name: web
+    volumes: [ &quot;./src:/usr/share/nginx/html:ro&quot; ]
+    ports: [ &quot;8080:80&quot; ]
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Con Docker arrancando, ejecuta en un terminal:</p>
+<pre><code class="language-bash">cd {ruta}/practicas/ci-cd
+docker-compose up -d
+docker ps
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Entra con un navegador web en <code>http://localhost:8080/</code>, modifica el fichero <code>practicas/ci-cd/src/index.html</code> en tu SO y refresca el navegador.</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Entra con un navegador web en <code>http://localhost:8888/</code> y chequea esta URL <code>http://web</code>.</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Explica qué hace el <code>docker-compose.yaml</code> utilizado. ¿Por qué basta con usar el modo <code>ro</code> en el servicio <code>web</code>?</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>¿Por qué usamos <code>http://web</code> en lugar de <code>http://localhost:8080</code> para validar nuestra página web? </p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="docker-5"><a class="header" href="#docker-5">Docker</a></h1>
+<h2 id="entorno-desarrollo"><a class="header" href="#entorno-desarrollo">Entorno desarrollo</a></h2>
+<p>En general, los repositorios de software contienen un <code>Dockerfile</code> para su construcción, distribución y despliegue, y un <code>docker-compose.yml</code> que arranca un entorno local para poder probar. Vamos a subir el <code>docker-compose.yml</code> al repo de <code>ci-cd</code>. Para ello nos faltaría configurar nuestras credenciales de Git en el contenedor <code>git</code>.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<p>Con Docker arrancando, ejecuta desde un terminal:</p>
+<pre><code class="language-bash">docker start -ai git
+# ... dentro del contenedor ...
+ssh-keygen -t ed25519 -C &quot;{email-usuario-github}&quot;
+# ... pulsa [Enter ↲] en cada paso ...
+git config --global user.email &quot;{email-usuario-github}&quot;
+git config --global user.name &quot;{usuario-github}&quot;
+cat /root/.ssh/id_ed25519.pub
+# ... copia la salida del comando anterior ...
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Entra en Github Settings <code>➜</code> SSH and GPG keys <code>➜</code> New SSH key (<code>https://github.com/settings/ssh/new</code>) y añade la clave SSH:</p>
+<ul>
+<li>Title: practicas</li>
+<li>Key: pega la clave SSH copiada del terminal</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Desde el terminal:</p>
+<pre><code class="language-bash">cd /practicas/ci-cd
+git remote set-url origin git@github.com:{usuario-github}/ci-cd.git
+git checkout -b feat/local-env
+git add .
+git commit -m &quot;feat: local-env&quot;
+git push origin feat/local-env
+# ... confía en la conexión con Github escribiendo yes ...
+</code></pre>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Entra en Github y crea la PR (<code>https://github.com/{usuario}/ci-cd/pull/new/feat/local-env</code>).</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>El entorno de desarrollo local nos permite descargar, modificar, construir, validar, probar y subir el código. ¿Desde dónde y con qué realizarías cada una de esas acciones en el entorno local basado en contenedores que hemos montado?</p>
+</li>
+<li><input disabled="" type="checkbox"/>
+<p>Los pasos de configuración de git podrían haberse incluido en la imagen como instrucciones <code>RUN</code> y <code>ADD</code> del Dockerfile ¿cuáles son las ventajas y desventajas con respecto a hacerlo en el contenedor?</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="paradigmas-de-programación"><a class="header" href="#paradigmas-de-programación">Paradigmas de programación</a></h1>
+<h2 id="estructurada"><a class="header" href="#estructurada">Estructurada</a></h2>
+<p>Secuencia de órdenes con control de ejecución condicional (<code>if</code>, <code>else</code>) y repetitivo (<code>for</code>, <code>while</code>) que se pueden agrupar en subrutinas o bloques (<code>function</code>).</p>
+<details open><summary>Máximo valor en lista de enteros...</summary>
+<pre><code class="language-js">function max(integers) {
+  var m = Number.MIN_SAFE_INTEGER;
+  for (var i = 0; i &lt; integers.length; i++) {
+    if (m &lt; integers[i]) m = integers[i];
+  }
+  return m;
+}
+const integers = [1,2,3,4,5];
+console.log(max(integers));
+</code></pre>
+</details>
+<details><summary>Playground...</summary>
+<p><br/><iframe
+  width="750"
+  height="300"
+  src="https://unpkg.com/javascript-playgrounds@1.2.3/public/index.html#data=%7B%22code%22%3A%22function%20max(integers)%20%7B%5Cn%20%20var%20m%20%3D%20Number.MIN_SAFE_INTEGER%3B%5Cn%20%20for%20(var%20i%20%3D%200%3B%20i%20%3C%20integers.length%3B%20i%2B%2B)%20%7B%5Cn%20%20%20%20if%20(m%20%3C%20integers%5Bi%5D)%20m%20%3D%20integers%5Bi%5D%3B%5Cn%20%20%7D%5Cn%20%20return%20m%3B%5Cn%7D%5Cnconst%20integers%20%3D%20%5B1%2C2%2C3%2C4%2C5%5D%3B%5Cnconsole.log(max(integers))%3B%22%7D"
+></iframe></p>
+</details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="paradigmas-de-programación-1"><a class="header" href="#paradigmas-de-programación-1">Paradigmas de programación</a></h1>
+<h2 id="imperativa"><a class="header" href="#imperativa">Imperativa</a></h2>
+<p>Las sentencias cambian el estado del programa.</p>
+<h3 id="procedural"><a class="header" href="#procedural">Procedural</a></h3>
+<p>Los procedimientos (<code>function</code>) modifican los datos o el estado compartido.</p>
+<details open><summary>Máximo valor en lista de enteros...</summary>
+<pre><code class="language-js">let m = Number.MIN_SAFE_INTEGER;
+function max(integers) {
+  for (let i = 0; i &lt; integers.length; i++) {
+    if (m &lt; integers[i]) m = integers[i];
+  }
+}
+function print() {
+  console.log(m);
+}
+function printMax(integers) {
+  max(integers);
+  print();
+}
+printMax([1,2,3,4,5]);
+</code></pre>
+</details>
+<details><summary>Playground...</summary>
+<p><br/><iframe
+  width="750"
+  height="400"
+  src="https://unpkg.com/javascript-playgrounds@1.2.3/public/index.html#data=%7B%22code%22%3A%22let%20m%20%3D%20Number.MIN_SAFE_INTEGER%3B%5Cnfunction%20max(integers)%20%7B%5Cn%20%20for%20(let%20i%20%3D%200%3B%20i%20%3C%20integers.length%3B%20i%2B%2B)%20%7B%5Cn%20%20%20%20if%20(m%20%3C%20integers%5Bi%5D)%20m%20%3D%20integers%5Bi%5D%3B%5Cn%20%20%7D%5Cn%7D%5Cnfunction%20print()%20%7B%5Cn%20%20console.log(m)%3B%5Cn%7D%5Cnfunction%20printMax(integers)%20%7B%5Cn%20%20max(integers)%3B%5Cn%20%20print()%3B%5Cn%7D%5CnprintMax(%5B1%2C2%2C3%2C4%2C5%5D)%3B%22%7D"
+></iframe></p>
+</details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="paradigmas-de-programación-2"><a class="header" href="#paradigmas-de-programación-2">Paradigmas de programación</a></h1>
+<h2 id="imperativa-1"><a class="header" href="#imperativa-1">Imperativa</a></h2>
+<p>Las sentencias cambian el estado del programa.</p>
+<h3 id="orientada-a-objetos"><a class="header" href="#orientada-a-objetos">Orientada a objetos</a></h3>
+<p>El problema se modela como objetos que encapsulan la lógica y la parte del estado que controlan.</p>
+<details open><summary>Máximo valor en lista de enteros...</summary>
+<pre><code class="language-js">class MaxFinder {
+  constructor(values) { this.values = values; }
+  find() { throw Error(&quot;Not implemented&quot;); }
+}
+class MaxInteger extends MaxFinder {
+  constructor(values) { super(values); }
+  find() {
+    var m = Number.MIN_SAFE_INTEGER;
+    for (var i = 0; i &lt; this.values.length; i++) {
+      if (m &lt; this.values[i]) m = this.values[i];
+    }
+    return m;
+  }
+}
+const maxFinder = new MaxInteger([1,2,3,4,5]);
+console.log(maxFinder.find());
+</code></pre>
+</details>
+<details><summary>Playground...</summary>
+<p><br/><iframe
+  width="750"
+  height="425"
+  src="https://unpkg.com/javascript-playgrounds@1.2.3/public/index.html#data=%7B%22code%22%3A%22class%20MaxFinder%20%7B%5Cn%20%20constructor(values)%20%7B%20this.values%20%3D%20values%3B%20%7D%5Cn%20%20find()%20%7B%20throw%20Error(%5C%22Not%20implemented%5C%22)%3B%20%7D%5Cn%7D%5Cnclass%20MaxInteger%20extends%20MaxFinder%20%7B%5Cn%20%20constructor(values)%20%7B%20super(values)%3B%20%7D%5Cn%20%20find()%20%7B%5Cn%20%20%20%20var%20m%20%3D%20Number.MIN_SAFE_INTEGER%3B%5Cn%20%20%20%20for%20(var%20i%20%3D%200%3B%20i%20%3C%20this.values.length%3B%20i%2B%2B)%20%7B%5Cn%20%20%20%20%20%20if%20(m%20%3C%20this.values%5Bi%5D)%20m%20%3D%20this.values%5Bi%5D%3B%5Cn%20%20%20%20%7D%5Cn%20%20%20%20return%20m%3B%5Cn%20%20%7D%5Cn%7D%5Cnconst%20maxFinder%20%3D%20new%20MaxInteger(%5B1%2C2%2C3%2C4%2C5%5D)%3B%5Cnconsole.log(maxFinder.find())%3B%22%7D"
+></iframe></p>
+</details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="paradigmas-de-programación-3"><a class="header" href="#paradigmas-de-programación-3">Paradigmas de programación</a></h1>
+<h2 id="declarativa"><a class="header" href="#declarativa">Declarativa</a></h2>
+<p>Lo contrario de imperativa: no hay estado, no especifica los pasos ni su orden de ejecución, define el &quot;qué&quot; pero no el &quot;cómo&quot;.</p>
+<h3 id="funcional"><a class="header" href="#funcional">Funcional</a></h3>
+<p>Los resultados se obtienen componiendo expresiones (funciones) las cuales pueden devolver otras expresiones o recibirlas como parámetros.</p>
+<details open><summary>Máximo valor en lista de enteros...</summary>
+<pre><code class="language-js">const max = (integers) =&gt; integers.reduce(
+  (accumulator, currentValue) =&gt; accumulator &lt; currentValue ? currentValue : accumulator
+);
+console.log(max([1, 2, 3, 4, 5]));
+</code></pre>
+<blockquote>
+<p>🔍 <strong>Nota:</strong> <em><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">documentación</a> de <code>array.reduce</code></em></p>
+</blockquote>
+</details>
+<details><summary>Playground...</summary>
+<p><br/><iframe
+  width="750"
+  height="175"
+  src="https://unpkg.com/javascript-playgrounds@1.2.3/public/index.html#data=%7B%22code%22%3A%22const%20max%20%3D%20(integers)%20%3D%3E%20integers.reduce(%5Cn%20%20(accumulator%2C%20currentValue)%20%3D%3E%20accumulator%20%3C%20currentValue%20%3F%20currentValue%20%3A%20accumulator%5Cn)%3B%5Cnconsole.log(max(%5B1%2C%202%2C%203%2C%204%2C%205%5D))%3B%22%7D"
+></iframe></p>
+</details><div style="break-before: page; page-break-before: always;"></div><h1 id="paradigmas-de-programación-4"><a class="header" href="#paradigmas-de-programación-4">Paradigmas de programación</a></h1>
+<h2 id="declarativa-1"><a class="header" href="#declarativa-1">Declarativa</a></h2>
+<p>Lo contrario de imperativa: no hay estado, no especifica los pasos ni su orden de ejecución, define el &quot;qué&quot; pero no el &quot;cómo&quot;.</p>
+<h3 id="reactiva"><a class="header" href="#reactiva">Reactiva</a></h3>
+<p>Los resultados se obtienen transformando un &quot;stream&quot; de eventos (datos) y propagando (reaccionando a) los cambios automáticamente.</p>
+<details open><summary>Máximo valor en lista de enteros...</summary>
+<pre><code class="language-js">import { fromEvent } from &quot;https://cdn.skypack.dev/rxjs@7.3.0&quot;;
+import { scan, map } from &quot;https://cdn.skypack.dev/rxjs@7.3.0/operators&quot;;
+
+const output = document.querySelector(&quot;output&quot;);
+const button = document.querySelector(&quot;button&quot;);
+
+fromEvent(button, &quot;click&quot;)
+  .pipe(map(ev =&gt; ev.clientX), scan((total, n) =&gt; total &lt; n ? n : total))
+  .subscribe((max) =&gt; {
+    output.textContent = &quot;Max X = &quot; + max;
+  });
+</code></pre>
+<blockquote>
+<p>🔍 <strong>Nota:</strong> <em><a href="https://rxjs.dev/guide/overview">documentación</a> de <code>rxjs</code></em></p>
+</blockquote>
+</details>
+<details><summary>Playground...</summary>
+<br/><div 
+  class="codepen" 
+  data-prefill 
+  data-height="400" 
+  data-theme-id="light"
+  data-default-tab="js,result" 
+  data-editable="true"
+>
+<pre data-lang="html">
+&lt;button&gt;Click me in different places&lt;/button&gt;
+&lt;output&gt;&lt;/output&gt;
+</pre>
+<pre data-lang="js">
+import { fromEvent } from "https://cdn.skypack.dev/rxjs@7.3.0";
+import { scan, map } from "https://cdn.skypack.dev/rxjs@7.3.0/operators";
+<p>const output = document.querySelector(&quot;output&quot;);
+const button = document.querySelector(&quot;button&quot;);</p>
+<p>fromEvent(button, &quot;click&quot;)
+.pipe(map(ev =&gt; ev.clientX), scan((total, n) =&gt; total &lt; n ? n : total))
+.subscribe((max) =&gt; { output.textContent = &quot;Max X = &quot; + max; });
+</pre></p>
+</div>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+</details>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/theme.js"></script>
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>
