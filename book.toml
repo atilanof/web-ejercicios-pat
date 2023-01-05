@@ -1,0 +1,17 @@
+[book]
+language = "es"
+multilingual = false
+title = "Programación de aplicaciones telemáticas"
+description = "Ejercicios y prácticas"
+authors = ["Alberto Peraleda"]
+
+[output.html]
+additional-js = ["theme/theme.js"]
+additional-css = ["theme/theme.css"]
+no-section-label = true
+git-repository-url = "https://github.com/apicai/web-ejercicios-pat-2023"
+edit-url-template = "https://github.com/apicai/web-ejercicios-pat-2023/edit/master/guide/{path}"
+
+[output.html.fold]
+enable = true
+level = 4
