@@ -418,7 +418,7 @@ de recursos en función de la carga (escalado horizontal)<sup class="footnote-re
 <div style="break-before: page; page-break-before: always;"></div><h1 id="docker-2"><a class="header" href="#docker-2">Docker</a></h1>
 <h2 id="imagen"><a class="header" href="#imagen">Imagen</a></h2>
 <p>Para crear una imagen que contenga las librerías, herramientas, configuraciones, etc. necesarias para ejecutar nuestro programa se utiliza un <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a>. Los Dockerfile parten de una imagen padre base sobre la que se instalan las dependencias necesarias. Las imágenes públicas se alojan en un &quot;registry&quot; del que se descargan si no están cacheadas localmente.</p>
-<p><task-list title="Práctica Docker - Entregable 2 de 4 - Imagen"></task-list></p>
+<p><task-list title="Práctica Docker - Entregable 1 de 4 - Imagen"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Crea el fichero <code>practicas/Dockerfile</code> con este contenido:
@@ -446,7 +446,7 @@ Las imágenes se identifican así: <code>registry/repository:tag</code>, ¿cuál
 <div style="break-before: page; page-break-before: always;"></div><h1 id="docker-3"><a class="header" href="#docker-3">Docker</a></h1>
 <h2 id="contenedor"><a class="header" href="#contenedor">Contenedor</a></h2>
 <p>Los contenedores se arrancan a partir del nombre de la imagen. Los contenedores ejecutan un único proceso y cuando éste termina se detiene el contenedor. Los contenedores parados se pueden volver a arrancar sin perder sus datos entre reinicios. Además, pueden compartir ficheros con el SO anfitrión.</p>
-<p><task-list title="Práctica Docker - Entregable 1 de 4 - Contenedor"></task-list></p>
+<p><task-list title="Práctica Docker - Entregable 2 de 4 - Contenedor"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 <p>Con Docker arrancando, ejecuta desde un terminal:</p>
@@ -481,7 +481,7 @@ exit
 <div style="break-before: page; page-break-before: always;"></div><h1 id="docker-4"><a class="header" href="#docker-4">Docker</a></h1>
 <h2 id="orquestación"><a class="header" href="#orquestación">Orquestación</a></h2>
 <p>Un servicio real suele componerse de varios componentes (servidores web, backends, bases de datos, brokers de mensajes, etc.). En una arquitectura de microservicios esos componentes se despliegan como contenedores, y es necesario coordinar su arranque y comunicación. En un entorno real se utiliza <a href="https://kubernetes.io/">Kubernetes</a>, pero para probar en un entorno local se suele usar <a href="https://docs.docker.com/compose/">Docker Compose</a>.</p>
-<p><task-list title="Práctica Docker - Entregable 1 de 4 - Orquestación"></task-list></p>
+<p><task-list title="Práctica Docker - Entregable 3 de 4 - Orquestación"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 <p>Crea el fichero <code>practicas/ci-cd/docker-compose.yml</code> con este contenido:</p>
