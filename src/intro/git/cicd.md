@@ -3,6 +3,8 @@
 
 Combinando ambos procesos es posible automatizar los despliegues de nuevas versiones con la certeza de que no tienen fallos y que, en caso de haberlos, se impida la integración de los cambios y su despliegue.
 
+<task-list title="Práctica Git - Ejercicio 6 de 6 - CI/CD"></task-list>
+
 - [ ] Modifica esta sección del workflow de CI con:
   ```yaml
   on:

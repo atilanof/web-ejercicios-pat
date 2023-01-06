@@ -22,7 +22,7 @@ fromEvent(button, "click")
     output.textContent = "Max X = " + max;
   });
 ```
-> 🔍 **Nota:** _[documentación](https://rxjs.dev/guide/overview) de `rxjs`_
+> 🔍 **Nota:** _[documentación](https://rxjs.dev/guide/overview) de_ `rxjs`.
 </details>
 
 <details><summary>Playground...</summary>

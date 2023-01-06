@@ -1,51 +1,99 @@
 (function(global) {
-    const taskStyles = ['checked', 'unchecked'];
-    const questionStyles = ['answer', 'question'];
 
-    function save(id, value) { global.localStorage && global.localStorage.setItem(id, value); }
-    function read(id) { return global.localStorage && global.localStorage.getItem(id); }
+  const taskStyles = ['checked', 'unchecked'];
+  const questionStyles = ['answer', 'question'];
 
-    function fitContent(element) {
-        element.style.height = "5px";
-        element.style.height = (element.scrollHeight)+"px";
+  // To remember completed steps and answers
+  function save(id, value) { global.localStorage && global.localStorage.setItem(id, value); }
+  function read(id) { return global.localStorage && global.localStorage.getItem(id); }
+  function fitContent(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
+  }
+  function toggleListItem(className) {
+    Array.from(global.document.querySelectorAll('li.' + className)).forEach(li => li.onclick(true));
+  }
+  function getListItems() { return Array.from(global.document.querySelectorAll('li > input[type="checkbox"]')); }
+  function getTaskList() { return global.document.querySelector('task-list'); }
+
+  // Custom tag as web component
+  global.customElements.define('task-list', class extends HTMLElement {
+    constructor() {
+      super();
+      this.innerHTML = `
+        <a id="unmark-all" title="Marcar todos incompletos" aria-label="Marcar todos incompletos"><i>✘</i></a>
+        <a id="mark-all" title="Marcar todos completos" aria-label="Marcar todos completos"><i>✔</i></a>
+        <span id="tasks-title"></span>
+        <a id="print-page" title="Entregar" aria-label="Entregar"><i class="fa fa-print"></i></a>
+      `;
     }
-
-    global.onhashchange = function() { 
-        Array.from(global.document.querySelectorAll('.footnote-definition')).forEach(e => 
-            e.id === global.location.hash.substring(1) ? 
-            e.classList.add("highlight") || e.classList.remove("lowlight") :
-            e.classList.remove("highlight") || e.classList.add("lowlight")
-        );
+    get title() { return this.getAttribute('title'); }
+    set title(val) { val ? this.setAttribute('title', '') : this.removeAttribute('title'); }
+    connectedCallback() {
+      global.document.getElementById("unmark-all").onclick = () => toggleListItem(questionStyles[0]) || toggleListItem(taskStyles[0]);
+      global.document.getElementById("mark-all").onclick = () => toggleListItem(questionStyles[1]) || toggleListItem(taskStyles[1]);
+      global.document.getElementById("print-page").onclick = () => global.print();
+      this.updateTitle();
     }
-
-    global.onbeforeprint = function() {
-        Array.from(global.document.querySelectorAll('li.' + questionStyles[1])).forEach(li => li.ondblclick(true));
+    updateTitle() {
+      const tasks = getListItems();
+      const completed = tasks.map(t => read(t.id) ? 1 : 0).reduce((total, i) => total + i);
+      global.document.getElementById("tasks-title").innerHTML = this.title + `: completado ${completed} de ${tasks.length}`;
     }
+  });
 
-    Array.from(global.document.querySelectorAll('li > input[type="checkbox"]')).forEach(i => { 
-        const li = i.parentElement;
-        const id = global.location.pathname + Array.from(li.parentNode.children).indexOf(li);
+  // Highlight footnotes
+  global.onhashchange = function() { 
+    Array.from(global.document.querySelectorAll('.footnote-definition')).forEach(e => 
+      e.id === global.location.hash.substring(1) ? 
+      e.classList.add("highlight") || e.classList.remove("lowlight") :
+      e.classList.remove("highlight") || e.classList.add("lowlight")
+    );
+  }
 
-        i.disabled = false;
-        i.style.display = 'none';
+  // Doc title -> PDF file title
+  global.onbeforeprint = function() {
+    const originalTitle = global.document.title;
+    const taskList =  getTaskList();
+    global.document.title = taskList ? taskList.title : originalTitle;
+    global.onafterprint = function() { global.document.title = originalTitle; };
+    toggleListItem(questionStyles[1]);
+  }
 
-        (li.ondblclick = (e) => { 
-            if (e && e.clientX - e.target.getBoundingClientRect().left > 0) return;
-            const styles = li.innerText.endsWith('?') ? questionStyles : taskStyles;
-            i.checked = e ? !i.checked : (read(id) || i.checked);
-            li.className = i.checked ? styles[0] : styles[1];
-            styles === taskStyles && save(id, i.checked ? i.checked : "");
-        })();
+  // Create the tasks and questions list
+  getListItems().forEach(i => { 
+    const li = i.parentElement;
+    i.id = global.location.pathname + Array.from(li.parentNode.children).indexOf(li);
+    i.disabled = false;
+    i.style.display = 'none';
 
-        if (questionStyles.includes(li.className)) {
-            const textarea = global.document.createElement("textarea");
-            textarea.oninput = () => fitContent(textarea) || save(textarea.id, textarea.value);
-            textarea.id = id;
-            textarea.value = read(id);
-            ['br','hr'].includes(li.lastElementChild.nodeName.toLocaleLowerCase()) ?
-                li.insertBefore(textarea, li.lastElementChild) :
-                li.appendChild(textarea);
-            textarea.value && textarea.oninput();
-        }
-    });
+    (li.onclick = (e) => { 
+      if (e && e.target && e.clientX - e.target.getBoundingClientRect().left > 0) return;
+      const styles = li.innerText.endsWith('?') ? questionStyles : taskStyles;
+      i.checked = e ? !i.checked : (read(i.id) || i.checked);
+      li.className = i.checked ? styles[0] : styles[1];
+      styles === taskStyles && save(i.id, i.checked ? i.checked : "");
+      const taskList = getTaskList();
+      taskList && taskList.updateTitle();
+    })();
+
+    if (questionStyles.includes(li.className)) {
+      const textarea = global.document.createElement("textarea");
+      textarea.oninput = () => fitContent(textarea) || save(i.id, textarea.value);
+      textarea.value = read(i.id);
+      ['br','hr'].includes(li.lastElementChild.nodeName.toLocaleLowerCase()) ?
+        li.insertBefore(textarea, li.lastElementChild) :
+        li.appendChild(textarea);
+      textarea.value && textarea.oninput();
+    }
+  });
+
+  Array.from(global.document.querySelectorAll("a[href^=http]")).forEach(a => {
+    const link = global.document.createElement("a");
+    link.innerHTML = "⤴︎";
+    link.href = a.href;
+    link.target = "_blank";
+    a.parentNode.insertBefore(link, a.nextSibling);
+  });
+
 })(this);

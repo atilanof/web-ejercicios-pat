@@ -3,6 +3,8 @@
 
 Los repositorios alojan el código junto con la metainformación asociada al histórico de cambios. Github proporciona uno basado en el VCS Git como un servicio en la nube.
 
+<task-list title="Práctica Git - Ejercicio 1 de 6 - Repositorio"></task-list>
+
 - [ ] Desde tu cuenta personal de Github crea un nuevo repositorio **público** llamado `ci-cd` inicializado con un fichero `README.md`.
 
 - [ ] Desde el nuevo repo `https://github.com/{usuario}/ci-cd` cree un nuevo Codespace. Una vez haya arrancado el entorno, desde su terminal teclee:
