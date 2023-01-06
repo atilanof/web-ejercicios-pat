@@ -147,8 +147,8 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="introducción"><a class="header" href="#introducción">Introducción</a></h1>
-<p>Ejemplos de código y prácticas para del curso de &quot;Programación de Aplicaciones Telemáticas&quot;. Algunos de ellos pueden ejecutarse desde esta misma web (los basados en Javascript, CSS y HTML). El resto se puede ejecutar desde <a href="https://github.com/features/codespaces">Github Codespaces</a> o bien en local usando contenedores <a href="https://www.docker.com/">Docker</a>. Para la descarga y entrega de prácticas se utilizará <a href="https://git-scm.com/">Git</a>.</p>
-<p>Las preguntas de las prácticas pueden contestarse desde la misma web, haciendo doble click sobre ellas, y luego imprimiendo la página para entregarlas como PDF. También se puede marcar los pasos completados en cada práctica al hacer doble click sobre ellos.</p>
+<p>Ejemplos de código y prácticas para la asignatura &quot;Programación de Aplicaciones Telemáticas&quot;. Algunos de ellos pueden ejecutarse desde esta misma web (los basados en Javascript, CSS y HTML). El resto se puede ejecutar desde <a href="https://github.com/features/codespaces">Github Codespaces</a> o bien en local usando contenedores <a href="https://www.docker.com/">Docker</a>. Para la descarga y entrega de prácticas se utilizará <a href="https://git-scm.com/">Git</a>.</p>
+<p>Las preguntas de las prácticas pueden contestarse desde la misma web, haciendo click sobre su icono, y luego imprimiendo la página para entregarlas como PDF. También se puede marcar los pasos completados en cada práctica al hacer clicar sobre ellos.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git"><a class="header" href="#git">Git</a></h1>
 <p><strong>Git</strong> es un sistema de control de versiones (VCS) basado en el uso de ramas para gestionar los cambios. <strong>Github</strong> es un servicio de alojamiento de código que usa Git como VCS y sobre el que se ofrecen otras funcionalidades relacionadas con el desarrollo colaborativo de software.</p>
 <h2 id="práctica-objetivos"><a class="header" href="#práctica-objetivos">Práctica: objetivos</a></h2>
@@ -197,6 +197,7 @@
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git-2"><a class="header" href="#git-2">Git</a></h1>
 <h2 id="repositorio"><a class="header" href="#repositorio">Repositorio</a></h2>
 <p>Los repositorios alojan el código junto con la metainformación asociada al histórico de cambios. Github proporciona uno basado en el VCS Git como un servicio en la nube.</p>
+<p><task-list title="Práctica Git - Ejercicio 1 de 6 - Repositorio"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 <p>Desde tu cuenta personal de Github crea un nuevo repositorio <strong>público</strong> llamado <code>ci-cd</code> inicializado con un fichero <code>README.md</code>.</p>
@@ -222,6 +223,7 @@ cat ci-cd/README.md
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git-3"><a class="header" href="#git-3">Git</a></h1>
 <h2 id="ramas"><a class="header" href="#ramas">Ramas</a></h2>
 <p>Los cambios en Git se realizan utilizando ramas. Las ramas representan una línea de desarrollo independiente dentro del repo. La rama inicial suele llamarse <code>main</code> (o <code>master</code>). Los cambios en una rama se realizan en 3 pasos: <code>① add ➜ ② commit ➜ ③ push</code>.</p>
+<p><task-list title="Práctica Git - Ejercicio 2 de 6 - Ramas"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 <p>Desde el Codespace anterior y usando el editor crea un nuevo directorio <code>src</code> y un fichero <code>index.html</code> dentro de él con el siguiente contenido:</p>
@@ -251,6 +253,7 @@ git push origin main
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git-4"><a class="header" href="#git-4">Git</a></h1>
 <h2 id="git-flow"><a class="header" href="#git-flow">Git flow</a></h2>
 <p>Es el convenio elegido por el equipo de desarrollo para organizar el uso de las ramas del repo. Github-Flow es uno de ellos y propone: ❶ la rama <code>main</code> siempre tiene el código válido y desplegable, ❷ los cambios se hacen en ramas nuevas desde <code>main</code>, ❸ las Pull Requests (PR) permiten solicitar la incorporación de los cambios en <code>main</code>, ❹ tras la revisión de la PR, los cambios se mezclan en <code>main</code>.</p>
+<p><task-list title="Práctica Git - Ejercicio 3 de 6 - Git flow"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Desde el terminal del Codespace anterior teclea:
@@ -283,6 +286,7 @@ git pull origin main
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git-5"><a class="header" href="#git-5">Git</a></h1>
 <h2 id="ci"><a class="header" href="#ci">CI</a></h2>
 <p>La integración continua consiste en la ejecución automática de pruebas y la obtención de sus informes cada vez que cambia el código.</p>
+<p><task-list title="Práctica Git - Ejercicio 4 de 6 - CI"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 <p>Crea un nuevo workflow llamado <code>ci.yml</code> desde las Github-Actions del repo (<code>https://github.com/{usuario}/ci-cd/actions/new</code>) <code>➜</code> &quot;set up a workflow yourself&quot; con el siguiente contenido:</p>
@@ -312,6 +316,7 @@ jobs:
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git-6"><a class="header" href="#git-6">Git</a></h1>
 <h2 id="cd"><a class="header" href="#cd">CD</a></h2>
 <p>El despliegue continuo permite instalar automáticamente los cambios una vez que estos han superado todas las pruebas.</p>
+<p><task-list title="Práctica Git - Ejercicio 5 de 6 - CD"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 <p>Entra en la configuración de Github-Pages del repo (<code>https://github.com/{usuario}/ci-cd/settings/pages</code>) <code>➜</code> &quot;Source&quot; <code>➜</code> &quot;GitHub Actions&quot; <code>➜</code> &quot;Static HTML&quot; <code>➜</code> &quot;Configure&quot;. Renombra el workflow a <code>cd.yml</code> y modifica las siguientes propiedades de su contenido:</p>
@@ -336,6 +341,7 @@ jobs:
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git-7"><a class="header" href="#git-7">Git</a></h1>
 <h2 id="cicd"><a class="header" href="#cicd">CI/CD</a></h2>
 <p>Combinando ambos procesos es posible automatizar los despliegues de nuevas versiones con la certeza de que no tienen fallos y que, en caso de haberlos, se impida la integración de los cambios y su despliegue.</p>
+<p><task-list title="Práctica Git - Ejercicio 6 de 6 - CI/CD"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Modifica esta sección del workflow de CI con:
@@ -412,6 +418,7 @@ de recursos en función de la carga (escalado horizontal)<sup class="footnote-re
 <div style="break-before: page; page-break-before: always;"></div><h1 id="docker-2"><a class="header" href="#docker-2">Docker</a></h1>
 <h2 id="imagen"><a class="header" href="#imagen">Imagen</a></h2>
 <p>Para crear una imagen que contenga las librerías, herramientas, configuraciones, etc. necesarias para ejecutar nuestro programa se utiliza un <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a>. Los Dockerfile parten de una imagen padre base sobre la que se instalan las dependencias necesarias. Las imágenes públicas se alojan en un &quot;registry&quot; del que se descargan si no están cacheadas localmente.</p>
+<p><task-list title="Práctica Docker - Ejercicio 2 de 4 - Imagen"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Crea el fichero <code>practicas/Dockerfile</code> con este contenido:
@@ -439,6 +446,7 @@ Las imágenes se identifican así: <code>registry/repository:tag</code>, ¿cuál
 <div style="break-before: page; page-break-before: always;"></div><h1 id="docker-3"><a class="header" href="#docker-3">Docker</a></h1>
 <h2 id="contenedor"><a class="header" href="#contenedor">Contenedor</a></h2>
 <p>Los contenedores se arrancan a partir del nombre de la imagen. Los contenedores ejecutan un único proceso y cuando éste termina se detiene el contenedor. Los contenedores parados se pueden volver a arrancar sin perder sus datos entre reinicios. Además, pueden compartir ficheros con el SO anfitrión.</p>
+<p><task-list title="Práctica Docker - Ejercicio 1 de 4 - Contenedor"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 <p>Con Docker arrancando, ejecuta desde un terminal:</p>
@@ -473,6 +481,7 @@ exit
 <div style="break-before: page; page-break-before: always;"></div><h1 id="docker-4"><a class="header" href="#docker-4">Docker</a></h1>
 <h2 id="orquestación"><a class="header" href="#orquestación">Orquestación</a></h2>
 <p>Un servicio real suele componerse de varios componentes (servidores web, backends, bases de datos, brokers de mensajes, etc.). En una arquitectura de microservicios esos componentes se despliegan como contenedores, y es necesario coordinar su arranque y comunicación. En un entorno real se utiliza <a href="https://kubernetes.io/">Kubernetes</a>, pero para probar en un entorno local se suele usar <a href="https://docs.docker.com/compose/">Docker Compose</a>.</p>
+<p><task-list title="Práctica Docker - Ejercicio 1 de 4 - Orquestación"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 <p>Crea el fichero <code>practicas/ci-cd/docker-compose.yml</code> con este contenido:</p>
@@ -513,6 +522,7 @@ docker ps
 <div style="break-before: page; page-break-before: always;"></div><h1 id="docker-5"><a class="header" href="#docker-5">Docker</a></h1>
 <h2 id="entorno-desarrollo"><a class="header" href="#entorno-desarrollo">Entorno desarrollo</a></h2>
 <p>En general, los repositorios de software contienen un <code>Dockerfile</code> para su construcción, distribución y despliegue, y un <code>docker-compose.yml</code> que arranca un entorno local para poder probar. Vamos a subir el <code>docker-compose.yml</code> al repo de <code>ci-cd</code>. Para ello nos faltaría configurar nuestras credenciales de Git en el contenedor <code>git</code>.</p>
+<p><task-list title="Práctica Docker - Ejercicio 4 de 4 - Entorno"></task-list></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 <p>Con Docker arrancando, ejecuta desde un terminal:</p>
@@ -648,7 +658,7 @@ console.log(maxFinder.find());
 console.log(max([1, 2, 3, 4, 5]));
 </code></pre>
 <blockquote>
-<p>🔍 <strong>Nota:</strong> <em><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">documentación</a> de <code>array.reduce</code></em></p>
+<p>🔍 <strong>Nota:</strong> <em><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">documentación</a> de</em> <code>array.reduce</code>.</p>
 </blockquote>
 </details>
 <details><summary>Playground...</summary>
@@ -676,7 +686,7 @@ fromEvent(button, &quot;click&quot;)
   });
 </code></pre>
 <blockquote>
-<p>🔍 <strong>Nota:</strong> <em><a href="https://rxjs.dev/guide/overview">documentación</a> de <code>rxjs</code></em></p>
+<p>🔍 <strong>Nota:</strong> <em><a href="https://rxjs.dev/guide/overview">documentación</a> de</em> <code>rxjs</code>.</p>
 </blockquote>
 </details>
 <details><summary>Playground...</summary>

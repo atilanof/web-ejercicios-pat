@@ -109,3 +109,35 @@ li.question > textarea {
 .lowlight * {
   opacity: 0.5;
 }
+
+task-list {
+  width: 100%;
+  border-bottom: 1px var(--table-header-bg) solid;
+  font-family: 'Signika Negative', sans-serif, serif;
+  color: var(--icons);
+	display: flex;
+	justify-content: space-between;
+}
+
+task-list i {
+  cursor: pointer;
+  color: var(--icons);
+  font-style: normal;
+  padding: 0 1px 0 4px;
+}
+
+task-list a {
+  text-decoration: none !important;
+}
+
+task-list i:hover {
+  color: var(--fg);
+}
+
+#tasks-title, #mark-all {
+  flex: 1 1 auto;
+}
+
+@media print {
+  #mark-all, #unmark-all { visibility: hidden !important; }
+}
