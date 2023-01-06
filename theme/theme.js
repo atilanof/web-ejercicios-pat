@@ -88,7 +88,7 @@
     }
   });
 
-  Array.from(global.document.querySelectorAll("a[href^=http]")).forEach(a => {
+  Array.from(global.document.querySelectorAll("a[href^=http]:not(a[title])")).forEach(a => {
     const link = global.document.createElement("a");
     link.innerHTML = "⤴︎";
     link.href = a.href;
