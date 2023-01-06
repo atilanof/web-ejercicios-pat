@@ -3,7 +3,7 @@
 
 El despliegue continuo permite instalar automáticamente los cambios una vez que estos han superado todas las pruebas.
 
-<task-list title="Práctica Git - Ejercicio 5 de 6 - CD"></task-list>
+<task-list title="Práctica Git - Entregable 5 de 6 - CD"></task-list>
 
 - [ ] Entra en la configuración de Github-Pages del repo (`https://github.com/{usuario}/ci-cd/settings/pages`) `➜` "Source" `➜` "GitHub Actions" `➜` "Static HTML" `➜` "Configure". Renombra el workflow a `cd.yml` y modifica las siguientes propiedades de su contenido:
   - `name: CD`

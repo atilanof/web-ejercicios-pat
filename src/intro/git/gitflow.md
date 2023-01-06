@@ -3,7 +3,7 @@
 
 Es el convenio elegido por el equipo de desarrollo para organizar el uso de las ramas del repo. Github-Flow es uno de ellos y propone: ❶ la rama `main` siempre tiene el código válido y desplegable, ❷ los cambios se hacen en ramas nuevas desde `main`, ❸ las Pull Requests (PR) permiten solicitar la incorporación de los cambios en `main`, ❹ tras la revisión de la PR, los cambios se mezclan en `main`.
 
-<task-list title="Práctica Git - Ejercicio 3 de 6 - Git flow"></task-list>
+<task-list title="Práctica Git - Entregable 3 de 6 - Git flow"></task-list>
 
 - [ ] Desde el terminal del Codespace anterior teclea:
   ```bash

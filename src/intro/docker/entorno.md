@@ -3,7 +3,7 @@
 
 En general, los repositorios de software contienen un `Dockerfile` para su construcción, distribución y despliegue, y un `docker-compose.yml` que arranca un entorno local para poder probar. Vamos a subir el `docker-compose.yml` al repo de `ci-cd`. Para ello nos faltaría configurar nuestras credenciales de Git en el contenedor `git`.
 
-<task-list title="Práctica Docker - Ejercicio 4 de 4 - Entorno"></task-list>
+<task-list title="Práctica Docker - Entregable 4 de 4 - Entorno"></task-list>
 
 - [ ] Con Docker arrancando, ejecuta desde un terminal:
   ```bash
