@@ -3,7 +3,7 @@
 
 Para crear una imagen que contenga las librerías, herramientas, configuraciones, etc. necesarias para ejecutar nuestro programa se utiliza un [Dockerfile](https://docs.docker.com/engine/reference/builder/). Los Dockerfile parten de una imagen padre base sobre la que se instalan las dependencias necesarias. Las imágenes públicas se alojan en un "registry" del que se descargan si no están cacheadas localmente.
 
-<task-list title="Práctica Docker - Entregable 2 de 4 - Imagen"></task-list>
+<task-list title="Práctica Docker - Entregable 1 de 4 - Imagen"></task-list>
 
 - [ ] Crea el fichero `practicas/Dockerfile` con este contenido:
   ```bash

@@ -3,7 +3,7 @@
 
 Un servicio real suele componerse de varios componentes (servidores web, backends, bases de datos, brokers de mensajes, etc.). En una arquitectura de microservicios esos componentes se despliegan como contenedores, y es necesario coordinar su arranque y comunicación. En un entorno real se utiliza [Kubernetes](https://kubernetes.io/), pero para probar en un entorno local se suele usar [Docker Compose](https://docs.docker.com/compose/).
 
-<task-list title="Práctica Docker - Entregable 1 de 4 - Orquestación"></task-list>
+<task-list title="Práctica Docker - Entregable 3 de 4 - Orquestación"></task-list>
 
 - [ ] Crea el fichero `practicas/ci-cd/docker-compose.yml` con este contenido:
   ```yaml
