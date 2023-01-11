@@ -5,7 +5,7 @@ Los repositorios alojan el código junto con la metainformación asociada al his
 
 <task-list title="Práctica Git - Entregable 1 de 6 - Repositorio"></task-list>
 
-- [ ] Desde tu cuenta personal de Github crea un nuevo repositorio **público** llamado `ci-cd` inicializado con un fichero `README.md`.
+- [ ] Desde tu cuenta personal de Github [crea](https://github.com/new) un nuevo repositorio **público** llamado `ci-cd` inicializado con un fichero `README.md` .
 
 - [ ] Desde el nuevo repo `https://github.com/{usuario}/ci-cd` cree un nuevo Codespace. Una vez haya arrancado el entorno, desde su terminal teclee:
   ```bash

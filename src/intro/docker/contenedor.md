@@ -1,6 +1,6 @@
 # Docker
 ## Contenedor
-Los contenedores se arrancan a partir del nombre de la imagen. Los contenedores ejecutan un único proceso y cuando éste termina se detiene el contenedor. Los contenedores parados se pueden volver a arrancar sin perder sus datos entre reinicios. Además, pueden compartir ficheros con el SO anfitrión.
+Los contenedores se arrancan a partir del nombre de una imagen. Los contenedores ejecutan un único proceso y cuando éste termina se detiene el contenedor. Los contenedores parados se pueden volver a arrancar sin perder sus datos entre reinicios. Además, pueden compartir ficheros con el SO anfitrión.
 
 <task-list title="Práctica Docker - Entregable 2 de 4 - Contenedor"></task-list>
 

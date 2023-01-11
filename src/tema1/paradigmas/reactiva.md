@@ -25,26 +25,18 @@ fromEvent(button, "click")
 > 🔍 **Nota:** _[documentación](https://rxjs.dev/guide/overview) de_ `rxjs`.
 </details>
 
-<details><summary>Playground...</summary>
-<br/><div 
-  class="codepen" 
-  data-prefill 
-  data-height="400" 
-  data-theme-id="light"
-  data-default-tab="js,result" 
-  data-editable="true"
->
-<pre data-lang="html">
+<details onclick='setTimeout(function(){__CPEmbed(".cp-later")},1)'><summary>Playground...</summary><br/>
+<div class="cp-later" data-prefill data-height="400" data-theme-id="light" data-default-tab="js,result" 
+data-editable="true" style="opacity:0">
+<pre data-lang="html" >
 &lt;button&gt;Click me in different places&lt;/button&gt;
 &lt;output&gt;&lt;/output&gt;
 </pre>
 <pre data-lang="js">
 import { fromEvent } from "https://cdn.skypack.dev/rxjs@7.3.0";
 import { scan, map } from "https://cdn.skypack.dev/rxjs@7.3.0/operators";
- 
 const output = document.querySelector("output");
 const button = document.querySelector("button");
- 
 fromEvent(button, "click")
   .pipe(map(ev =&gt; ev.clientX), scan((total, n) =&gt; total &lt; n ? n : total))
   .subscribe((max) =&gt; { output.textContent = "Max X = " + max; });

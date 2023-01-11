@@ -2,7 +2,7 @@
 
 **Git** es un sistema de control de versiones (VCS) basado en el uso de ramas para gestionar los cambios. **Github** es un servicio de alojamiento de código que usa Git como VCS y sobre el que se ofrecen otras funcionalidades relacionadas con el desarrollo colaborativo de software.
 
-## Práctica: objetivos
+## Objetivos
 
 * Usar Git desde la línea de comandos[^1] para gestionar los cambios.
 

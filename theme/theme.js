@@ -1,15 +1,18 @@
 (function(global) {
 
+  // Class names of questions and tasks
   const taskStyles = ['checked', 'unchecked'];
   const questionStyles = ['answer', 'question'];
 
   // To remember completed steps and answers
   function save(id, value) { global.localStorage && global.localStorage.setItem(id, value); }
   function read(id) { return global.localStorage && global.localStorage.getItem(id); }
+  // Avoid hidden text in textareas with scroll
   function fitContent(element) {
     element.style.height = "5px";
     element.style.height = (element.scrollHeight)+"px";
   }
+  // Selectors of the main UI elements
   function toggleListItem(className) {
     Array.from(global.document.querySelectorAll('li.' + className)).forEach(li => li.onclick(true));
   }
@@ -53,11 +56,11 @@
 
   // Doc title -> PDF file title
   global.onbeforeprint = function() {
-    const originalTitle = global.document.title;
-    const taskList =  getTaskList();
-    global.document.title = taskList ? taskList.title : originalTitle;
-    global.onafterprint = function() { global.document.title = originalTitle; };
     toggleListItem(questionStyles[1]);
+    const originalTitle = global.document.title;
+    global.document.title = (getTaskList() || {}).title || originalTitle;
+    global.onafterprint = function() { global.document.title = originalTitle; };
+    global.navigator.clipboard && global.navigator.clipboard.writeText(global.document.title + ".pdf");
   }
 
   // Create the tasks and questions list
@@ -74,7 +77,7 @@
       li.className = i.checked ? styles[0] : styles[1];
       styles === taskStyles && save(i.id, i.checked ? i.checked : "");
       const taskList = getTaskList();
-      taskList && taskList.updateTitle();
+      (getTaskList() || {updateTitle: ()=>{}}).updateTitle();
     })();
 
     if (questionStyles.includes(li.className)) {
@@ -88,11 +91,13 @@
     }
   });
 
+  // Open external links in a new tab
   Array.from(global.document.querySelectorAll("a[href^=http]:not(a[title])")).forEach(a => {
     const link = global.document.createElement("a");
     link.innerHTML = "⤴︎";
     link.href = a.href;
     link.target = "_blank";
+    link.title = "Abre en una pestaña nueva";
     a.parentNode.insertBefore(link, a.nextSibling);
   });
 

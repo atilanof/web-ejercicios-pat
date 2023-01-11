@@ -20,13 +20,15 @@ Combinando ambos procesos es posible automatizar los despliegues de nuevas versi
     deploy:
       needs: [ci]
   ```
-- [ ] Sube los cambios y comprueba el resultado en las Actions del repo.
+- [ ] Sube los cambios y comprueba el resultado en las Actions del repo (`https://github.com/{usuario}/ci-cd/actions`).
 - [ ] ¿Puedes explicar los cambios anteriores a partir del resultado observado?<hr/>
 - [ ] Modifica el fichero `./src/index.html` para que la CI pase, sube los cambios y comprueba el resultado en las Actions del repo y en la web desplegada.
 - [ ] ¿Qué Actions se ejecutan al hacer una PR? ¿qué Actions se ejecutan al mezclar cambios en `main`?
 - [ ] ¿Por qué representa un problema subir directamente los cambios a `main` en lugar de usar una PR?<hr/>
-- [ ] Entra en las reglas de protección de ramas del repo en Github (`https://github.com/{usuario}/scores/settings/branches`) `➜` "Add rule" y usa estos valores:
+- [ ] Entra en las reglas de protección de ramas del repo en Github (`https://github.com/{usuario}/ci-cd/settings/branches`) `➜` "Add rule" y usa estos valores:
   - Branch name pattern: `main`
   - ☑️ Require a pull request before merging
   - ☑️ Require status checks to pass before merging
 - [ ] ¿Qué ocurre ahora al intentar hacer cambios directamente en `main`? ¿y al hacer una PR conteniendo un cambio que no pasa la CI?
+
+> ⚠️ **Importante**: _para o borra el [Codespace](https://github.com/codespaces) al terminar de usarlo._
