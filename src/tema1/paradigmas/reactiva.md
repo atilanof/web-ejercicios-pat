@@ -22,7 +22,7 @@ fromEvent(button, "click")
     output.textContent = "Max X = " + max;
   });
 ```
-> 🔍 **Nota:** _[documentación](https://rxjs.dev/guide/overview) de_ `rxjs`.
+> 🔍 **Nota:** _[documentación](https://rxjs.dev/guide/overview) de `rxjs`._
 </details>
 
 <details onclick='setTimeout(function(){__CPEmbed(".cp-later")},1)'><summary>Playground...</summary><br/>

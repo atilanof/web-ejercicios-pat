@@ -1,7 +1,6 @@
 # Docker
 
-**Docker** es el gestor de contenedores más popular. Un **contenedor** es un paquete que incluye todo lo necesario para ejecutar de manera independiente un programa. Los contenedores se ejecutan[^1] de forma aislada y virtualizada de modo que su programa solo ve los recursos asignados al contenedor. Esto permite distribuir[^2] el software garantizando el mismo comportamiento en todos los entornos, orquestar el despliegue de varios contenedores conformando un servicio y automatizar la asignación 
-de recursos en función de la carga (escalado horizontal)[^3].
+**Docker** es el gestor de contenedores más popular. Un **contenedor** es un paquete que incluye todo lo necesario para ejecutar de manera independiente una aplicación. Los contenedores se ejecutan[^1] de forma aislada y virtualizada de modo que la aplicación solo ve los recursos asignados al contenedor. Esto permite distribuir[^2] el software garantizando el mismo comportamiento en todos los entornos, orquestar el despliegue de varios contenedores conformando un servicio, y automatizar la asignación de recursos en función de la carga (escalado horizontal)[^3].
 
 ## Objetivos
 

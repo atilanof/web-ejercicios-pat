@@ -13,8 +13,8 @@
 
 - [Docker](intro/docker/docker.md)
   - [Prerrequisitos](intro/docker/prerrequisitos.md)
-  - [Imagen](intro/docker/imagen.md)
-  - [Contenedor](intro/docker/contenedor.md)
+  - [Imágenes](intro/docker/imagenes.md)
+  - [Contenedores](intro/docker/contenedores.md)
   - [Orquestación](intro/docker/orquestacion.md)
   - [Entorno desarrollo](intro/docker/entorno.md)
 
@@ -35,3 +35,4 @@
   - [Peticiones](tema2/peticiones.md)
   - [Respuestas](tema2/respuestas.md)
   - [Servidor](tema2/servidor.md)
+  - [Cookies](tema2/cookies.md)

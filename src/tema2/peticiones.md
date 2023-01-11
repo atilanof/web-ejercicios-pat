@@ -11,9 +11,9 @@ La petición HTTP más sencilla se compone de `{MÉTODO} /{recurso} HTTP/{versio
    GET /anything?param1=?&#=&param2=value2 HTTP/1.0
 
    ```
-   > ⁉️ **Pregunta:** _¿Qué problema puede causar el valor del primer parámetro? ¿qué ocurre cuando mandas_ `GET /anything?param1=%3F%26%23%3D&param2=value2 HTTP/1.0`_?_
+   > ⁉️ **Pregunta:** _¿Qué problema puede causar el valor del primer parámetro? ¿qué ocurre cuando mandas `GET /anything?param1=%3F%26%23%3D&param2=value2 HTTP/1.0`?_
 
-   > 🔍 **Nota:** _[httpbin.org](https://httpbin.org) es un servicio que permite jugar con diversas funcionalidades de HTTP. La petición a_ `/anything` _por ejemplo nos responde con lo que le ha llegado en la petición._
+   > 🔍 **Nota:** _[httpbin.org](https://httpbin.org) es un servicio para jugar con diversas funcionalidades de HTTP. La petición a `/anything`, por ejemplo, nos responde con lo que le ha llegado en la petición._
 
 1.  `POST` permite enviar datos al servidor. Vuelve a hacer el **paso 1** con este otro contenido:
     ```http
@@ -38,13 +38,13 @@ La petición HTTP más sencilla se compone de `{MÉTODO} /{recurso} HTTP/{versio
 
    ```
 
-1. Cuando mandamos datos, normalmente también se indica qué tipo[^4] de datos son (texto, imagen, binario,etc.). Existe la posibilidad de mandar en la misma petición varios datos de diferente tipo. Para ello se usan envíos "multipart". 
-   1. Entra en [https://httpie.io/app](https://httpie.io/app).
+1. Cuando mandamos datos, normalmente también se indica qué tipo de datos son (texto, imagen, binario,etc.)[^4]. Existe la posibilidad de mandar en la misma petición varios datos de diferente tipo. Para ello se usan envíos "multipart". 
+   1. Entra en [Httpie](https://httpie.io/app).
    2. Envía un `POST` multipart a `https://httpbin.org/anything`.
    3. Previsualiza la petición enviada.
    > ⁉️ **Pregunta:** _¿En qué caso de uso real puede ser útil "multipart"? ¿y "chunked"?_
    
-   > 🔍 **Nota:** _Aparte de los navegadores web y sus herramientas para desarrolladores, existen muchas aplicaciones para hacer peticiones HTTP. La más popular es [Postman](https://www.postman.com/), aunque hay muchas más con interfaz gráfica. También hay clientes por línea de comandos como [Curl](https://curl.se/) y [Wget](https://en.wikipedia.org/wiki/Wget). [Httpie](https://httpie.io/) tiene version gráfica y por línea de comandos._
+   > 🔍 **Nota:** _Aparte de los navegadores web y sus herramientas para desarrolladores, existen muchas aplicaciones para hacer peticiones HTTP. La más popular es [Postman](https://www.postman.com/), aunque hay muchas más con interfaz gráfica. También hay clientes por línea de comandos como [Curl](https://curl.se/) y [Wget](https://en.wikipedia.org/wiki/Wget). [Httpie](https://httpie.io/) tiene versión gráfica y por línea de comandos._
 
 1. Hasta ahora, hemos usado HTTP 1.0 y 1.1. HTTP 2 y 3 son protocolos binarios y HTTP/3 no usa TCP por lo que no podemos probarlo con `telnet`. Además, no todos los clientes y servidores los implementan por lo que para usarlos se necesita negociar el protocolo previamente mediante HTTP o TLS. Ejecuta los siguientes comandos:
    ```bash
