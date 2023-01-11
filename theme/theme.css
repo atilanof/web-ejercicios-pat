@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap');
 
+:root {
+  --links: #1f8cff;
+}
+
 .footnote-definition p, blockquote em {
   font-family: 'Signika Negative', sans-serif, serif;
 }
@@ -11,7 +15,7 @@
 }
 
 .chapter li a.active, .chapter li a:hover {
-	color: #1f8cff;
+	color: var(--links);
 }
 
 .chapter li {

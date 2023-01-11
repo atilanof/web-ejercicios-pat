@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html lang="es" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Peticiones - Programación de aplicaciones telemáticas</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Ejercicios y prácticas">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/theme.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introducción</a></li><li class="chapter-item expanded "><a href="../intro/git/git.html">Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/git/prerrequisitos.html">Prerrequisitos</a></li><li class="chapter-item expanded "><a href="../intro/git/repositorio.html">Repositorio</a></li><li class="chapter-item expanded "><a href="../intro/git/ramas.html">Ramas</a></li><li class="chapter-item expanded "><a href="../intro/git/gitflow.html">Git flow</a></li><li class="chapter-item expanded "><a href="../intro/git/ci.html">CI</a></li><li class="chapter-item expanded "><a href="../intro/git/cd.html">CD</a></li><li class="chapter-item expanded "><a href="../intro/git/cicd.html">CI/CD</a></li></ol></li><li class="chapter-item expanded "><a href="../intro/docker/docker.html">Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../intro/docker/prerrequisitos.html">Prerrequisitos</a></li><li class="chapter-item expanded "><a href="../intro/docker/imagen.html">Imagen</a></li><li class="chapter-item expanded "><a href="../intro/docker/contenedor.html">Contenedor</a></li><li class="chapter-item expanded "><a href="../intro/docker/orquestacion.html">Orquestación</a></li><li class="chapter-item expanded "><a href="../intro/docker/entorno.html">Entorno desarrollo</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Tema 1</li><li class="chapter-item expanded "><a href="../tema1/paradigmas/paradigmas.html">Paradigmas de programación</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tema1/paradigmas/estructurada.html">Estructurada</a></li><li class="chapter-item expanded "><a href="../tema1/paradigmas/procedural.html">Imperativa - Procedural</a></li><li class="chapter-item expanded "><a href="../tema1/paradigmas/objetos.html">Imperativa - Orientada a objetos</a></li><li class="chapter-item expanded "><a href="../tema1/paradigmas/funcional.html">Declarativa - Funcional</a></li><li class="chapter-item expanded "><a href="../tema1/paradigmas/reactiva.html">Declarativa - Reactiva</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Tema 2</li><li class="chapter-item expanded "><a href="../tema2/http.html">HTTP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tema2/prerrequisitos.html">Prerrequisitos</a></li><li class="chapter-item expanded "><a href="../tema2/conexiones.html">Conexiones</a></li><li class="chapter-item expanded "><a href="../tema2/peticiones.html" class="active">Peticiones</a></li><li class="chapter-item expanded "><a href="../tema2/respuestas.html">Respuestas</a></li><li class="chapter-item expanded "><a href="../tema2/servidor.html">Servidor</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programación de aplicaciones telemáticas</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/apicai/web-ejercicios-pat-2023" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/apicai/web-ejercicios-pat-2023/edit/main/src/tema2/peticiones.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="http"><a class="header" href="#http">HTTP</a></h1>
+<h2 id="peticiones"><a class="header" href="#peticiones">Peticiones</a></h2>
+<p>La petición HTTP más sencilla se compone de <code>{MÉTODO} /{recurso} HTTP/{version}\r\n\r\n</code>. El método<sup class="footnote-reference"><a href="#1">1</a></sup> indica la acción a realizar y el recurso<sup class="footnote-reference"><a href="#2">2</a></sup> indica la entidad sobre la que realizar la acción. Adicionalmente, se pueden incluir cabeceras y un cuerpo para enviar datos.</p>
+<ol>
+<li>
+<p><code>GET</code> permite recuperar el recurso de la ruta indicada. Usa este <code>telnet</code> para enviar la siguente petición:</p>
+<pre><code class="language-bash">telnet httpbin.org 80
+</code></pre>
+<pre><code class="language-http">GET /anything?param1=?&amp;#=&amp;param2=value2 HTTP/1.0
+
+</code></pre>
+<blockquote>
+<p>⁉️ <strong>Pregunta:</strong> <em>¿Qué problema puede causar el valor del primer parámetro? ¿qué ocurre cuando mandas</em> <code>GET /anything?param1=%3F%26%23%3D&amp;param2=value2 HTTP/1.0</code><em>?</em></p>
+</blockquote>
+<blockquote>
+<p>🔍 <strong>Nota:</strong> <em><a href="https://httpbin.org">httpbin.org</a> es un servicio que permite jugar con diversas funcionalidades de HTTP. La petición a</em> <code>/anything</code> <em>por ejemplo nos responde con lo que le ha llegado en la petición.</em></p>
+</blockquote>
+</li>
+<li>
+<p><code>POST</code> permite enviar datos al servidor. Vuelve a hacer el <strong>paso 1</strong> con este otro contenido:</p>
+<pre><code class="language-http">POST /anything HTTP/1.0
+Content-Length: 5
+
+12345
+
+</code></pre>
+<blockquote>
+<p>⁉️ <strong>Pregunta:</strong> <em>¿Qué ocurre si indicamos un tamaño del contenido inferior a lo que realmente mandamos?</em></p>
+</blockquote>
+</li>
+<li>
+<p>Si no sabemos el tamaño de los datos que queremos mandar, se puede enviar la información por partes de tamaño conocido<sup class="footnote-reference"><a href="#3">3</a></sup>. Prueba esta otra petición:</p>
+<pre><code class="language-http">POST /anything HTTP/1.0
+Transfer-Encoding: chunked
+
+9
+una parte
+A
+otra parte
+0
+
+</code></pre>
+</li>
+<li>
+<p>Cuando mandamos datos, normalmente también se indica qué tipo<sup class="footnote-reference"><a href="#4">4</a></sup> de datos son (texto, imagen, binario,etc.). Existe la posibilidad de mandar en la misma petición varios datos de diferente tipo. Para ello se usan envíos &quot;multipart&quot;. </p>
+<ol>
+<li>Entra en <a href="https://httpie.io/app">https://httpie.io/app</a>.</li>
+<li>Envía un <code>POST</code> multipart a <code>https://httpbin.org/anything</code>.</li>
+<li>Previsualiza la petición enviada.</li>
+</ol>
+<blockquote>
+<p>⁉️ <strong>Pregunta:</strong> <em>¿En qué caso de uso real puede ser útil &quot;multipart&quot;? ¿y &quot;chunked&quot;?</em></p>
+</blockquote>
+<blockquote>
+<p>🔍 <strong>Nota:</strong> <em>Aparte de los navegadores web y sus herramientas para desarrolladores, existen muchas aplicaciones para hacer peticiones HTTP. La más popular es <a href="https://www.postman.com/">Postman</a>, aunque hay muchas más con interfaz gráfica. También hay clientes por línea de comandos como <a href="https://curl.se/">Curl</a> y <a href="https://en.wikipedia.org/wiki/Wget">Wget</a>. <a href="https://httpie.io/">Httpie</a> tiene version gráfica y por línea de comandos.</em></p>
+</blockquote>
+</li>
+<li>
+<p>Hasta ahora, hemos usado HTTP 1.0 y 1.1. HTTP 2 y 3 son protocolos binarios y HTTP/3 no usa TCP por lo que no podemos probarlo con <code>telnet</code>. Además, no todos los clientes y servidores los implementan por lo que para usarlos se necesita negociar el protocolo previamente mediante HTTP o TLS. Ejecuta los siguientes comandos:</p>
+<pre><code class="language-bash"># ... negociación vía HTTP/1.1 ...
+curl http://httpbin.org/anything -d &quot;12345&quot; -v --http2
+# ... negociación vía TLS/ALPN ...
+curl https://httpbin.org/anything -d &quot;12345&quot; -v --http2
+</code></pre>
+</li>
+</ol>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Los métodos o verbos están definidos en la <a href="https://httpwg.org/specs/rfc9110.html#methods">especificación</a>. Los más comunes son <code>GET</code> y <code>POST</code>.</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>La ruta al recurso se puede componer de <code>/path?query#fragment</code>, y la <code>query</code> a su vez se compone de <code>param1=value1&amp;param2=value2&amp;...</code>.</p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
+<p>Cada &quot;chunk&quot; se envía indicando primero su longitud en hexadecimal y después su contenido en una nueva línea. Para finalizar se envía un &quot;chunk&quot; vacío: <code>0\r\n\r\n</code>.</p>
+</div>
+<div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
+<p><code>Content-Type</code> es la cabecera que indica el tipo de datos que se envían. Se utilizan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#important_mime_types_for_web_developers">MIME types</a> para identificarlos. Por ejemplo, para las peticiones que hemos hecho usaríamos <code>Content-Type: text/plain</code>.</p>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../tema2/conexiones.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../tema2/respuestas.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../tema2/conexiones.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../tema2/respuestas.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/theme.js"></script>
+
+
+    </body>
+</html>
