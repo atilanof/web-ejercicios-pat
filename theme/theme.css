@@ -4,6 +4,14 @@
   --links: #1f8cff;
 }
 
+code {
+  font-style: normal;
+}
+
+sup {
+  line-height: 1em;
+}
+
 .footnote-definition p, blockquote em {
   font-family: 'Signika Negative', sans-serif, serif;
 }
