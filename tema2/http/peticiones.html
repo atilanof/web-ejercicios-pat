@@ -224,7 +224,7 @@ curl https://httpbin.org/anything -d &quot;12345&quot; -v --http2
 <p>Cada &quot;chunk&quot; se envía indicando primero su longitud en hexadecimal y después su contenido en una nueva línea. Para finalizar se envía un &quot;chunk&quot; vacío: <code>0\r\n\r\n</code>.</p>
 </div>
 <div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
-<p><code>Content-Type</code> es la cabecera que indica el tipo de datos que se envían. Se utilizan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#important_mime_types_for_web_developers">MIME types</a> para identificarlos. Por ejemplo, para las peticiones que hemos hecho usaríamos <code>Content-Type: text/plain</code>.</p>
+<p><code>Content-Type</code> es la cabecera que indica el tipo de datos que se envían. Se utilizan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#important_mime_types_for_web_developers">MIME types</a> para identificarlos. Además, puede venir acompañada de la codificación de caracteres utilizada en los datos. Por ejemplo, para las peticiones que hemos hecho usaríamos <code>Content-Type: text/plain; charset=utf-8</code>.</p>
 </div>
 
                     </main>

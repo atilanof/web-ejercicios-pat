@@ -888,7 +888,7 @@ curl https://httpbin.org/anything -d &quot;12345&quot; -v --http2
 <p>Cada &quot;chunk&quot; se envía indicando primero su longitud en hexadecimal y después su contenido en una nueva línea. Para finalizar se envía un &quot;chunk&quot; vacío: <code>0\r\n\r\n</code>.</p>
 </div>
 <div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
-<p><code>Content-Type</code> es la cabecera que indica el tipo de datos que se envían. Se utilizan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#important_mime_types_for_web_developers">MIME types</a> para identificarlos. Por ejemplo, para las peticiones que hemos hecho usaríamos <code>Content-Type: text/plain</code>.</p>
+<p><code>Content-Type</code> es la cabecera que indica el tipo de datos que se envían. Se utilizan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#important_mime_types_for_web_developers">MIME types</a> para identificarlos. Además, puede venir acompañada de la codificación de caracteres utilizada en los datos. Por ejemplo, para las peticiones que hemos hecho usaríamos <code>Content-Type: text/plain; charset=utf-8</code>.</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="http-4"><a class="header" href="#http-4">HTTP</a></h1>
 <h2 id="respuestas"><a class="header" href="#respuestas">Respuestas</a></h2>
@@ -1172,7 +1172,7 @@ Content-Length: 278
 </tbody></table>
 </div>
 <blockquote>
-<p>⁉️ <strong>Pregunta:</strong> <em>Los dos documentos HTML están escritos con la misma codificación ¿cuál es y cuál está usando el navegador al leer cada uno de ellos?</em></p>
+<p>⁉️ <strong>Pregunta:</strong> <em>Los ficheros anteriores están guardados con diferente codificación, que está convenientemente declarada como metainformación en el HTML ¿cuáles son sus codificaciones? ¿por qué solo uno de ellos se ve correctamente?</em></p>
 </blockquote>
 <blockquote>
 <p>🔍 <strong>Nota:</strong> <em>Intenta ver el código fuente de cada uno de los marcos haciendo click derecho sobre ellos.</em></p>
@@ -1505,7 +1505,7 @@ Texto después
 <li>
 <p>A continuación se muestran diferentes elementos HTML usando etiquetas no semánticas:</p>
 <pre><code class="language-html">&lt;span&gt;Título principal&lt;/span&gt;
-&lt;div onclick=&quot;&quot;&gt;Enviar formulario&lt;/span&gt;
+&lt;div onclick=&quot;&quot;&gt;Enviar formulario&lt;/div&gt;
 &lt;b&gt;Este texto es importante resaltarlo&lt;/b&gt;
 Párrafo 1&lt;br&gt;&lt;br&gt;Párrafo 2
 Campo: &lt;input type=&quot;text&quot;&gt;
@@ -1530,13 +1530,13 @@ Más información sobre accesibilidad &lt;a href=&quot;&quot;&gt;aquí&lt;/a&gt;
   &lt;article&gt; &lt;!-- Algo autocontenido, distribuible, reusable de forma independiente --&gt;
     &lt;h2&gt;Título del artículo&lt;/h2&gt;
     &lt;section&gt;
-      &lt;h3&gt;Título de una sección dentro del artículo&lt;/h2&gt;
+      &lt;h3&gt;Título de una sección dentro del artículo&lt;/h3&gt;
       &lt;p&gt;Contenido de la sección&lt;/p&gt;
     &lt;/section&gt;
     &lt;aside&gt;
       &lt;h3&gt;Contenido relacionado indirectamente: citas, tabla de contenidos, etc.&lt;/h3&gt;
       &lt;figure&gt;
-        &lt;img alt=&quot;Imagen con leyenda&quot; /&gt;
+        &lt;img alt=&quot;Imagen con leyenda&quot; src=&quot;img&quot;&gt;
         &lt;figcaption&gt;Leyenda de la imagen&lt;/figcaption&gt;
       &lt;/figure&gt;
     &lt;/aside&gt;
