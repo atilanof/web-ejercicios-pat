@@ -3843,7 +3843,7 @@ foto.onclick = function() {
 <ol>
 <li>Añadir un paso de confirmación del usuario para evitar la autorización automática.</li>
 <li>Utilizar cookies con <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#samesite_attribute"><code>SameSite</code></a> igual a <code>Strict</code> para que no se envíen cuando se hacen peticiones desde un dominio diferente al que pertenecen.</li>
-<li>Programáticamente incluir un token y/o cabecera especial en las peticiones legítimas, que el servidor validará para autorizar la operación. Al contrario que las cookies, éstas cabeceras no se envían automáticamente, y el atacante no dispone de sus valores para incluirlos en su petición.</li>
+<li>Programáticamente incluir un token y/o cabecera HTTP especial en las peticiones legítimas, que el servidor validará para autorizar la operación. Al contrario que las cookies, éstas cabeceras no se envían automáticamente, y el atacante no dispone de sus valores para incluirlos en su petición.</li>
 </ol>
 
                     </main>
