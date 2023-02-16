@@ -192,13 +192,14 @@
 }
 .contenedor li:hover {
   background: royalblue;
-}</pre></div>
+}
+</pre></div>
 <ol>
 <li>
 <p>Añade <code>justify-content: center;</code> al contenedor para centrar los elementos.</p>
 </li>
 <li>
-<p>Los elementos no están ocupando todo el espacio disponible en la dimensión horizontal porque tienen un valor de <code>flex-grow</code> igual a 0. Cambia el valor a 1 en la propiedad <code>flex</code> para que crezcan todos con la misma proporción.</p>
+<p>Los elementos no están ocupando todo el espacio disponible en la dimensión horizontal<sup class="footnote-reference"><a href="#2">2</a></sup> porque tienen un valor de <code>flex-grow</code> igual a 0. Cambia el valor a 1 en la propiedad <code>flex</code> para que crezcan todos con la misma proporción.</p>
 </li>
 <li>
 <p>Si, por ejemplo, quisiéramos que ocupara 4 veces más &quot;Inicio&quot; usaríamos <code>flex: 4 1 0;</code>. Añade esa propiedad al primer elemento.</p>
@@ -206,18 +207,43 @@
 <li>
 <p>Para simular una situación en la que se encoge el elemento, podemos poner un tamaño inicial grande al resto: usa <code>flex: 1 4 0;</code> en el primero y <code>flex: 1 1 180px;</code> en el resto.</p>
 <blockquote>
-<p>⁉️ <strong>Ejercicio:</strong> <em>Comprueba visualmente que encoger 4 veces el primer elemento es igual a hacer 4 veces más grande el resto de elementos.</em></p>
+<p>⁉️ <strong>Ejercicio 1:</strong> <em>Comprueba visualmente que encoger 4 veces el primer elemento es igual a hacer 4 veces más grande el resto de elementos.</em></p>
 </blockquote>
 </li>
-<li>
-<p>Para cambiar la dimensión sobre la que se distribuyen los elementos usa <code>flex-direction: column;</code> en el contenedor<sup class="footnote-reference"><a href="#2">2</a></sup>.</p>
-</li>
 </ol>
+<p>Vamos a combinar los conceptos de <a href="../../tema4/css/pseudoclases.html">pseudoclase</a>, <a href="../../tema4/css/posicion-position.html">posición</a> y maquetación, que ya hemos visto, para crear un sub-menú desplegable al pasar el ratón por encima de los menús anteriores.</p>
+<blockquote>
+<p>⁉️ <strong>Ejercicio 2:</strong> <em>Coloca el siguiente HTML, que representa un sub-menú, dentro de uno de los menús anteriores (después del <code>&lt;/a&gt;</code>):</em></p>
+<details><summary><em>1. HTML del sub-menú...</em></summary>
+<pre><code class="language-html">&lt;ul class=&quot;submenu&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Submenú 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Submenú 2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</details>
+<details><summary><em>2. Añade y completa las <code>?</code> del siguiente CSS...</em></summary>
+<pre><code class="language-css">.submenu {
+  display: none;
+  list-style: none;
+  padding: 0;
+  background: royalblue;
+  position: ?
+}
+.submenu &gt; li:? {
+  background: dodgerblue;
+}
+.contenedor &gt; li:? &gt; .submenu {
+  display: block;
+}
+</code></pre>
+</details>
+<br>
+</blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Usar tamaños fijos no ayuda a adaptar el contenido a diferentes tamaños de pantalla. Usando proporciones podremos encoger o crecer en función del espacio disponible en cada pantalla.</p>
 </div>
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
-<p>Si no se indica, se utiliza por defecto la dimensión horizontal <code>flex-direction: row;</code>.</p>
+<p>Para cambiar la dimensión sobre la que se distribuyen los elementos usa <code>flex-direction: column;</code> en el contenedor. Si no se indica, se utiliza por defecto la dimensión horizontal <code>flex-direction: row;</code>.</p>
 </div>
 
                     </main>
