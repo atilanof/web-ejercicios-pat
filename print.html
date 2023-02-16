@@ -1151,7 +1151,7 @@ Content-Length: 293
 <p>🔍 <strong>Nota:</strong> <em>Estos mismos prerrequisitos aplican a los temas de CSS y JavaScript.</em></p>
 </blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Puedes ver un ejemplo de configuración en la sección sobre <a href="tema3/html//intro/git/cd.html">despliegue en Github</a> del tema de Git.</p>
+<p>Puedes ver un ejemplo de configuración en la sección sobre <a href="tema3/html/../../intro/git/cd.html">despliegue en Github</a> del tema de Git. Solo cambiará el nombre de tu repo en lugar del <code>ci-cd</code> indicado en esos pasos.</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="html-2"><a class="header" href="#html-2">HTML</a></h1>
 <h2 id="estructura"><a class="header" href="#estructura">Estructura</a></h2>
@@ -2064,15 +2064,9 @@ p {
 <h3 id="flexbox"><a class="header" href="#flexbox">Flexbox</a></h3>
 <p>Con <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Flexbox</a> podemos colocar los elementos con respecto a una de las dimensiones (la horizontal o la vertical), y a lo largo de esa dimensión controlar la proporción que ocupa cada elemento<sup class="footnote-reference"><a href="#1">1</a></sup>. Para ello se utiliza la propiedad <code>flex: flex-grow flex-shrink flex-basis;</code> en los elementos de un contenedor con <code>display: flex</code>:</p>
 <ul>
-<li>
-<p><code>flex-grow</code>: indica en qué proporción crecerá el elemento respecto del resto cuando sobre espacio.</p>
-</li>
-<li>
-<p><code>flex-shrink</code>: indica en qué proporción encogerá el elemento respecto del resto cuando falte espacio.</p>
-</li>
-<li>
-<p><code>flex-basis</code>: indica el tamaño inicial para el elemento antes de redistribuir el espacio.</p>
-</li>
+<li><code>flex-grow</code>: indica en qué proporción crecerá el elemento respecto del resto cuando sobre espacio.</li>
+<li><code>flex-shrink</code>: indica en qué proporción encogerá el elemento respecto del resto cuando falte espacio.</li>
+<li><code>flex-basis</code>: indica el tamaño inicial para el elemento antes de redistribuir el espacio.</li>
 </ul>
 <div class="codepen" data-prefill data-height="350" data-theme-id="light" data-default-tab="css,result" data-editable="true" style="opacity:0">
 <pre data-lang="html">&lt;body>
@@ -2138,7 +2132,13 @@ p {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="css-12"><a class="header" href="#css-12">CSS</a></h1>
 <h2 id="maquetación-2"><a class="header" href="#maquetación-2">Maquetación</a></h2>
 <h3 id="grid"><a class="header" href="#grid">Grid</a></h3>
-<p>Para diseños que requieren colocar elementos en ambas dimensiones es más sencillo utilizar <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Grid</a>. Se trata de colocar los elementos en la cuadrícula definida en el contenedor. El tamaño de las filas y columnas se puede definir proporcionalmente al espacio disponible con la unidad <code>fr</code>. Existen muchas formas de definir la cuadrícula, a continuación vemos un ejemplo que utiliza nombres de áreas.</p>
+<p>Para diseños que requieren colocar elementos en ambas dimensiones es más sencillo utilizar <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Grid</a>. Se activa con <code>display: grid</code> en el contenedor. </p>
+<p>Se trata de colocar los elementos en la cuadrícula definida en el contenedor. Existen muchas formas de definir la cuadrícula, a continuación vemos un ejemplo que utiliza nombres de áreas:</p>
+<ul>
+<li>Con la propiedad <code>grid-template-columns</code> en el contenedor, se definen las proporciones de las columnas<sup class="footnote-reference"><a href="#1">1</a></sup>.</li>
+<li>Con la propiedad <code>grid-template-areas</code> en el contenedor, se definen las áreas disponibles en la cuadrícula.</li>
+<li>Con la propiedad <code>grid-area</code> en el elemento a colocar, se le asigna a una de las áreas indicadas en la propiedad anterior.</li>
+</ul>
 <div class="codepen" data-prefill data-height="350" data-theme-id="light" data-default-tab="css,result" data-editable="true" style="opacity:0">
   <pre data-lang="html">&lt;body>
   &lt;header class="cabecera">Cabecera&lt;/header>
@@ -2187,6 +2187,9 @@ body * {
 <blockquote>
 <p>⁉️ <strong>Ejercicio:</strong> <em>Estudia la CSS y el diseño para añadir un índice a la derecha del contenido.</em></p>
 </blockquote>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Utiliza la unidad <code>fr</code> para definir el ancho de las columnas proporcionalmente al espacio disponible. En vez de columnas, se puede definir la altura de las filas pero usando <code>grid-template-rows</code>.</p>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="css-13"><a class="header" href="#css-13">CSS</a></h1>
 <h2 id="diseño-responsivo"><a class="header" href="#diseño-responsivo">Diseño responsivo</a></h2>
 <p>Su objetivo es hacer que la misma página se vea bien en todos los tamaños de pantalla. Flexbox y Grid permiten hacer diseños con proporciones de modo que los contenidos se adapten al espacio disponible en cada pantalla. Además de esas técnicas, hay otras recomendaciones para el diseño de webs responsivas.</p>
@@ -2289,13 +2292,13 @@ body * {
   <pre data-lang="html">&lt;body>
 &lt;section class="relativas">
   &lt;aside class="flota">&lt;/aside>
-  &lt;p>Este contenedor está utilizando unidades &lt;strong>rem&lt;/strong> para definir los tamaños de letras, márgenes, paddings, altos y anchos.&lt;/p>
+  &lt;p>Este contenedor está utilizando unidades &lt;strong>em&lt;/strong> para definir los tamaños de letras, márgenes, paddings, altos y anchos.&lt;/p>
   &lt;p>Si reconfiguramos el tamaño de la fuente, este contenedor modifica sus tamaños en la misma proporción. Cuando esta página se vea en pantallas o muy grandes o muy pequeñas, puede ser interesante cambiar esas proporciones para mejorar la legibilidad y el uso. Por ejemplo, aumentar el tamaño de un botón para que sea más fácil pulsarlo.&lt;/p>
 &lt;/section>
 &lt;section class="pixels">
   &lt;aside class="flota">&lt;/aside>
   &lt;p>Este contenedor está utilizando unidades de &lt;strong>píxeles&lt;/strong> para definir los tamaños de letras, márgenes, paddings, altos y anchos.&lt;/p>
-  &lt;p>Si reconfiguramos el tamaño de la fuente, este contenedor permanece igual con las mismas dimensiones. Eso puede ser interesante cuando se diseña la página para una resolución fija. Pero si esta página se viera en una pantalla pequeña puede que el los botones no sean lo suficientemente grandes para pulsarlos con facilidad.&lt;/p>
+  &lt;p>Si reconfiguramos el tamaño de la fuente, este contenedor permanece igual con las mismas dimensiones. Eso puede ser interesante cuando se diseña la página para una resolución fija. Pero si esta página se viera en una pantalla pequeña puede que los botones no sean lo suficientemente grandes para pulsarlos con facilidad.&lt;/p>
 &lt;/section>
 &lt;/body></pre>
   <pre data-lang="css">html {
@@ -2304,20 +2307,20 @@ body * {
 }
 .relativas .flota {
   float: left;
-  width: 5rem;
-  height: 9rem;
+  width: 5em;
+  height: 9em;
   background-color: green;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  margin-right: 1em;
+  margin-bottom: 1em;
 }
 .relativas {
-  width: 20rem;
+  width: 20em;
   border: 5px solid gray;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 1em;
+  margin: 1em;
 }
 .relativas p {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1em 0;
 }
 .pixels .flota {
   float: left;
@@ -2337,14 +2340,15 @@ body * {
   margin: 0 0 16px 0;
   font-size: 16px;
 }</pre></div>
-<ol>
-<li>
-<p>La propiedad <code>font-size</code> nos permite reconfigurar las proporciones del primer contenedor fácilmente, pero no del segundo. Ahora está al 100%, lo que indica que se está usando el valor por defecto de este navegador (o el configurado por el usuario). Manualmente, vamos a ponerlo a <code>font-size: 75%;</code> simulando lo que haría una media query en determinadas condiciones.</p>
-</li>
-<li>
-<p>Para ver cómo funciona la unidad <code>em</code> vamos a poner en el contenedor <code>relativas</code> un tamaño de fuente diferente: <code>font-size: 0.5rem;</code>. Como los elementos hijos usan <code>rem</code> siguen con las mismas dimensiones, pero sus textos han heredado el nuevo tamaño de fuente definido en el padre. Para que el diseño mantenga la proporción correcta, cambia los <code>rem</code> por <code>em</code> en todos sus elementos hijos.</p>
-</li>
-</ol>
+<p>En el ejemplo anterior, la propiedad <code>font-size</code> nos permite reconfigurar las proporciones del primer contenedor fácilmente, pero no del segundo. Ahora está al 100%, lo que indica que se está usando el valor por defecto de este navegador (o el configurado por el usuario). Añade la siguiente media query para ver lo fácil que es cambiar sus proporciones en caso de necesidad:</p>
+<pre><code class="language-css">@media (max-width: 30rem) {
+  .relativas { font-size: 50%; }
+}
+</code></pre>
+<p>Para ver la utilidad de lo anterior, vamos a ver lo que implicaría cambiar el segundo contenedor para ajustar sus proporciones a la mitad como hemos hecho con el primero.</p>
+<blockquote>
+<p>⁉️ <strong>Ejercicio:</strong> <em>Las reglas CSS del segundo contenedor utilizan la clase <code>pixels</code>. Cambia primero su <code>font-size</code> a <code>8px</code> para ver como sus proporciones se desajustan solo con el cambio del tamaño de fuente. Luego modifica el resto de sus propiedades con la mitad de píxeles.</em></p>
+</blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Otra unidad relativa ampliamente utilizada es <code>%</code>: porcentaje relativo a la misma propiedad en el elemento padre. Por ejemplo, un elemento con <code>font-size: 50%;</code> tendrá un tamaño de letra la mitad de pequeño que el de su padre.</p>
 </div>
@@ -2760,7 +2764,7 @@ p {
 &lt;/body></pre>
   <pre data-lang="css">html { font-size: 75%; padding: 2rem; }</pre></div>
 </details><div style="break-before: page; page-break-before: always;"></div><h1 id="javascript"><a class="header" href="#javascript">JavaScript</a></h1>
-<p>Es el lenguaje de programación nativo de los navegadores web<sup class="footnote-reference"><a href="#1">1</a></sup>. Es <a href="tema5/js/../../tema1/paradigmas/paradigmas.html">multi-paradigma</a>, interpretado, ejecutado en un solo hilo y basado en eventos. ECMAScript es su especificación que está en permanente evolución<sup class="footnote-reference"><a href="#2">2</a></sup>.</p>
+<p>Es el lenguaje de programación nativo de los navegadores web<sup class="footnote-reference"><a href="#1">1</a></sup>. Es <a href="tema5/js/../../tema1/paradigmas/paradigmas.html">multi-paradigma</a>, interpretado, ejecutado en un solo hilo y basado en eventos<sup class="footnote-reference"><a href="#2">2</a></sup>. ECMAScript es su especificación que está en permanente evolución<sup class="footnote-reference"><a href="#3">3</a></sup>.</p>
 <h2 id="objetivos-7"><a class="header" href="#objetivos-7">Objetivos</a></h2>
 <ul>
 <li>
@@ -2780,6 +2784,9 @@ p {
 <p>También se usa como lenguaje de lado servidor con <a href="https://nodejs.org/en/">NodeJS</a>.</p>
 </div>
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>Este modelo de ejecución está implementado con un <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">bucle de eventos</a>.</p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
 <p>Como consecuencia no todos los navegadores soportan las nuevas características. De ahí que existan herramientas como <a href="https://babeljs.io/docs/en/index.html">Babel</a> que convierten el código para que sea compatible con los navegadores más usados.</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="javascript-1"><a class="header" href="#javascript-1">JavaScript</a></h1>
@@ -2836,10 +2843,10 @@ console.log('Campo anidado:', objeto.campoObjeto.campoCadena);
 console.log('Contenido de todo el objeto:', objeto);
 </code></pre>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 1:</strong> <em>Copia y pega el código anterior en la consola JavaScript. Intenta leer el campo <code>campoObjeto.otroObjeto.noExisto</code>. Luego intenta leer este otro <code>campoObjeto.otroObjeto.noExisto.tampocoExisto</code>.</em></p>
+<p>⁉️ <strong>Ejercicio 1:</strong> <em>Copia y pega el código anterior en la consola JavaScript. Intenta leer el campo <code>objeto.campoObjeto.noExisto</code>. Luego intenta leer este otro <code>objeto.campoObjeto.noExisto.tampocoExisto</code>.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 2:</strong> <em>Asigna al <code>campoObjeto.otroObjeto</code> otro objeto creado así: <code>const objeto2 = {campo: 1}</code>. Luego cambia el valor del campo del <code>objeto2</code> y observa qué ocurre con el contenido del primer objeto.</em></p>
+<p>⁉️ <strong>Ejercicio 2:</strong> <em>Asigna al <code>objeto.campoObjeto.otroObjeto</code> otro objeto creado así: <code>const objeto2 = {campo: 1}</code>. Luego cambia el valor del campo del <code>objeto2</code> y observa qué ocurre con el contenido del primer objeto.</em></p>
 </blockquote>
 <blockquote>
 <p>⁉️ <strong>Ejercicio 3:</strong> <em>Utilizando los métodos del objeto <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON#static_methods"><code>JSON</code></a> de JavaScript:</em></p>
@@ -2858,7 +2865,7 @@ array[0] = '1er elemento modificado';
 array.push('elemento nuevo añadido al final');
 
 console.log('Longitud del array:', array.length);
-console.log('Contenido de todo el array:', objeto);
+console.log('Contenido de todo el array:', array);
 </code></pre>
 <blockquote>
 <p>⁉️ <strong>Ejercicio 1:</strong> <em>Copia y pega el código anterior en la consola JavaScript. Intenta leer la posición 10 del array. Asigna un valor a dicha posición, y mira de nuevo la longitud del array.</em></p>
@@ -3749,7 +3756,7 @@ foto.onclick = function() {
 &lt;div class="card">
   &lt;div class="card-body row">
     &lt;div class="col-12">
-      &lt;snap-shot id="snapshot">Cámara no disponible&lt;/snapshot>
+      &lt;snap-shot id="snapshot">Cámara no disponible o sin permisos&lt;/snapshot>
     &lt;/div>
     &lt;div class="col-12 text-center mt-3">
       &lt;button id="foto" type="button" class="btn btn-outline-secondary">
