@@ -163,7 +163,7 @@
 <li>
 <p>O, asignándola a ese atributo pero utilizando el API del DOM:</p>
 <pre><code class="language-js">const boton = document.getElementById('boton');
-const meHanPulsado = (event) =&gt; { boton.textContent = `Click nº ${event.detail}` };
+const meHanPulsado = (event) =&gt; boton.textContent = `Click nº ${event.detail}`;
 boton.onclick = meHanPulsado;
 </code></pre>
 </li>
