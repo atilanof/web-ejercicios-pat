@@ -2379,7 +2379,7 @@ body * {
 <p>⁉️ <strong>Ejercicio:</strong> <em>Las reglas CSS del segundo contenedor utilizan la clase <code>pixels</code>. Cambia primero su <code>font-size</code> a <code>8px</code> para ver como sus proporciones se desajustan solo con el cambio del tamaño de fuente. Luego modifica el resto de sus propiedades con la mitad de píxeles.</em></p>
 </blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Otra unidad relativa ampliamente utilizada es <code>%</code>: porcentaje relativo a la misma propiedad en el elemento padre. Por ejemplo, un elemento con <code>font-size: 50%;</code> tendrá un tamaño de letra la mitad de pequeño que el de su padre.</p>
+<p>Otra unidad relativa ampliamente utilizada es <code>%</code>: porcentaje relativo a la misma propiedad en el elemento padre (contenedor). Por ejemplo, un elemento con <code>width: 50%;</code> ocupará la mitad del ancho disponible en el contenedor.</p>
 </div>
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
 <p>Cada navegador tiene un tamaño de letra razonable para las dimensiones del dispositivo en el que se ejecuta. Además, el usuario puede establecer otro tamaño que se ajuste más a sus necesidades. Utilizar este tamaño como referencia para la página web suele ser lo más adecuado.</p>
@@ -3104,6 +3104,9 @@ console.log(array);
 </code></pre>
 </li>
 </ol>
+<blockquote>
+<p>🔍 <strong>Nota:</strong> <em>Para depurar el código JS: botón derecho <code>➜</code> Inspeccionar <code>➜</code> Depurador o Sources. Selecciona el fichero con el código JS en el árbol de ficheros de la izquierda. Para añadir un punto de ruptura y que la ejecución se pare, marca uno de los números de línea del fichero abierto. Recarga la página si esa línea se ejecutó al cargar la página.</em></p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="javascript-13"><a class="header" href="#javascript-13">JavaScript</a></h1>
 <h2 id="web-apis-1"><a class="header" href="#web-apis-1">Web APIs</a></h2>
 <h3 id="bom"><a class="header" href="#bom"><abbr title="Browser Object Model">BOM</abbr></a></h3>
@@ -3323,13 +3326,14 @@ tituloWebApis.hidden = true;
 <div style="break-before: page; page-break-before: always;"></div><h1 id="javascript-19"><a class="header" href="#javascript-19">JavaScript</a></h1>
 <h2 id="web-apis-7"><a class="header" href="#web-apis-7">Web APIs</a></h2>
 <h3 id="eventos"><a class="header" href="#eventos">Eventos</a></h3>
-<p>Siempre que el usuario interactúa con los elementos HTML de la página, se disparan eventos que pueden ser capturados mediante JavaScript para dar comportamiento a la aplicación web. Cada API tiene sus propios <a href="https://developer.mozilla.org/en-US/docs/Web/Events">eventos</a>, aquí vamos a ver los básicos relacionados con la interacción del ratón y el teclado sobre los elementos HTML:</p>
+<p>Siempre que el usuario interactúa con los elementos HTML de la página, se disparan eventos que pueden ser capturados mediante JavaScript para dar comportamiento a la aplicación web. A continuación, veremos los básicos relacionados con la interacción del ratón y el teclado sobre los elementos HTML:</p>
 <ul>
 <li><code>click</code></li>
 <li><code>change</code></li>
 <li><code>keyup</code></li>
 <li><code>submit</code></li>
 </ul>
+<p>Hay muchas más clases de eventos, no todos relacionados con la interacción del usuario. Cada API tiene sus propios <a href="https://developer.mozilla.org/en-US/docs/Web/Events">eventos</a>. Por ejemplo, el evento <code>load</code> se dispara cuando la página se ha cargado completamente (y todos los elementos están disponibles en el DOM), el <code>unload</code> antes de abandonar la página, etc.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="javascript-20"><a class="header" href="#javascript-20">JavaScript</a></h1>
 <h2 id="web-apis-8"><a class="header" href="#web-apis-8">Web APIs</a></h2>
 <h3 id="eventos-1"><a class="header" href="#eventos-1">Eventos</a></h3>
@@ -3358,7 +3362,7 @@ boton.onclick = meHanPulsado;
 <p>⁉️ <strong>Ejercicio 1:</strong> <em>Utilizando la consola JavaScript del navegador, haz que al pulsar sobre el título &quot;Registro&quot; de esta página, se ejecute la función <code>meHanPulsado</code> anterior.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 2:</strong> <em>Modifica la función, para que cuando el evento indique que se ha pulsado 10 veces, se restaure el título y se quite el handler (si usaste <code>addEventListener</code> deberás usar <code>removeEventListener</code>).</em></p>
+<p>⁉️ <strong>Ejercicio 2:</strong> <em>Modifica la función, para que cuando el evento indique que se ha pulsado 3 veces, se restaure el título y se quite el handler (si usaste <code>addEventListener</code> deberás usar <code>removeEventListener</code>).</em></p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="javascript-21"><a class="header" href="#javascript-21">JavaScript</a></h1>
 <h2 id="web-apis-9"><a class="header" href="#web-apis-9">Web APIs</a></h2>
@@ -3565,13 +3569,13 @@ const actualizar = function() {
 }
 const usaRespuesta = async function() {
   try {
-    const json = await peticion('URL', {
+    const objeto = await peticion('URL', {
       method: 'POST',
       mode: 'cors',
       headers: { 'Cabecera': 'valor' },
       body: 'cuerpo petición',
     });
-    console.log('Respuesta:', json);
+    console.log('Respuesta:', objeto);
   } catch (error) {
     console.error('Error:', error);
   }
@@ -3579,12 +3583,12 @@ const usaRespuesta = async function() {
 usaRespuesta();
 </code></pre>
 <blockquote>
-<p>⁉️ <strong>Ejercicio:</strong> <em>Modifica el ejercicio anterior que usa XHR para que en su lugar utilice <code>fetch</code>.</em></p>
-<details><summary><em>Pista...</em></summary>
+<p>⁉️ <strong>Ejercicio:</strong> <em>Modifica el ejercicio anterior que usa XHR para que en su lugar utilice <code>fetch</code> usando:.</em></p>
+<details><summary><em>Async y await</em></summary>
 <pre><code class="language-js">try {
   const respuesta = await fetch(...);
-  const cuerpoJson = await respuesta.json();
   if (respuesta.ok) {
+    const objeto = await respuesta.json();
     ...
   } else {
     ...
@@ -3592,6 +3596,23 @@ usaRespuesta();
 } catch(error) {
   ...
 }
+</code></pre>
+</details>
+<details><summary><em>Promises</em></summary>
+<pre><code class="language-js">fetch(...)
+  .then(response =&gt; {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error(`Respuesta con error ${response.status}`);
+    }
+  })
+  .then(objeto =&gt; {
+    ...
+  })
+  .catch(error =&gt; {
+    ...
+  });
 </code></pre>
 </details>
 <br>

@@ -164,13 +164,13 @@
 }
 const usaRespuesta = async function() {
   try {
-    const json = await peticion('URL', {
+    const objeto = await peticion('URL', {
       method: 'POST',
       mode: 'cors',
       headers: { 'Cabecera': 'valor' },
       body: 'cuerpo petición',
     });
-    console.log('Respuesta:', json);
+    console.log('Respuesta:', objeto);
   } catch (error) {
     console.error('Error:', error);
   }
@@ -178,12 +178,12 @@ const usaRespuesta = async function() {
 usaRespuesta();
 </code></pre>
 <blockquote>
-<p>⁉️ <strong>Ejercicio:</strong> <em>Modifica el ejercicio anterior que usa XHR para que en su lugar utilice <code>fetch</code>.</em></p>
-<details><summary><em>Pista...</em></summary>
+<p>⁉️ <strong>Ejercicio:</strong> <em>Modifica el ejercicio anterior que usa XHR para que en su lugar utilice <code>fetch</code> usando:.</em></p>
+<details><summary><em>Async y await</em></summary>
 <pre><code class="language-js">try {
   const respuesta = await fetch(...);
-  const cuerpoJson = await respuesta.json();
   if (respuesta.ok) {
+    const objeto = await respuesta.json();
     ...
   } else {
     ...
@@ -191,6 +191,23 @@ usaRespuesta();
 } catch(error) {
   ...
 }
+</code></pre>
+</details>
+<details><summary><em>Promises</em></summary>
+<pre><code class="language-js">fetch(...)
+  .then(response =&gt; {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error(`Respuesta con error ${response.status}`);
+    }
+  })
+  .then(objeto =&gt; {
+    ...
+  })
+  .catch(error =&gt; {
+    ...
+  });
 </code></pre>
 </details>
 <br>
