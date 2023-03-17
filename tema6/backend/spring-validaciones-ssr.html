@@ -209,7 +209,8 @@ public String contacto(
   Model model
 ) {
   if (!result.hasErrors()) {
-    model.addAttribute(&quot;exito&quot;, &quot;Gracias &quot; + contacto.email() + &quot;, tu mensaje ha sido recibido.&quot;);
+    model.addAttribute(&quot;exito&quot;, 
+      &quot;Gracias &quot; + contacto.email() + &quot;, tu mensaje ha sido recibido.&quot;);
   }
   return &quot;contacto&quot;;
 }

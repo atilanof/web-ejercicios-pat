@@ -3905,7 +3905,7 @@ foto.onclick = function() {
 <ol>
 <li>Añadir un paso de confirmación del usuario para evitar la autorización automática.</li>
 <li>Utilizar cookies con <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#samesite_attribute"><code>SameSite</code></a> igual a <code>Strict</code> para que no se envíen cuando se hacen peticiones desde un dominio diferente al que pertenecen.</li>
-<li>Programáticamente incluir un token y/o cabecera HTTP especial en las peticiones legítimas, que el servidor validará para autorizar la operación. Al contrario que las cookies, éstas cabeceras no se envían automáticamente, y el atacante no dispone de sus valores para incluirlos en su petición.</li>
+<li>Programáticamente incluir un token y/o cabecera HTTP especial en las peticiones legítimas, que el servidor validará para autorizar la operación. <a name="token"></a>Al contrario que las cookies, éstos tokens/cabeceras no se envían automáticamente, y el atacante no dispone de sus valores para incluirlos en su petición.</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="backend"><a class="header" href="#backend">Backend</a></h1>
 <p>Es la parte del sistema que procesa los datos y ejecuta la lógica que da un servicio o funcionalidad. Los usuarios se comunican con él a través del frontend.</p>
@@ -4159,7 +4159,8 @@ public String contacto(
   Model model
 ) {
   if (!result.hasErrors()) {
-    model.addAttribute(&quot;exito&quot;, &quot;Gracias &quot; + contacto.email() + &quot;, tu mensaje ha sido recibido.&quot;);
+    model.addAttribute(&quot;exito&quot;, 
+      &quot;Gracias &quot; + contacto.email() + &quot;, tu mensaje ha sido recibido.&quot;);
   }
   return &quot;contacto&quot;;
 }
@@ -4274,7 +4275,7 @@ public class ManejadorErroresGlobales {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="backend-16"><a class="header" href="#backend-16">Backend</a></h1>
 <h2 id="spring-10"><a class="header" href="#spring-10">Spring</a></h2>
 <h3 id="seguridad"><a class="header" href="#seguridad">Seguridad</a></h3>
-<p>El módulo de <a href="https://docs.spring.io/spring-security/reference/index.html">Spring Security</a> añade autenticación (identificación del usuario), autorización (control de acceso) y protección frente a vulnerabilidades web como <a href="tema6/backend/../../tema5/js/vulnerabilidades-csrf.html">CSRF</a>.</p>
+<p>El módulo de <a href="https://docs.spring.io/spring-security/reference/index.html">Spring Security</a> añade autenticación (identificación del usuario), autorización (control de acceso) y protección frente a vulnerabilidades web como <a href="tema6/backend/../../tema5/js/vulnerabilidades-csrf.html">CSRF</a><sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
 <blockquote>
 <p>⁉️ <strong>Ejercicio:</strong> <em>Para habilitar Spring Security añade la siguiente dependencia al proyecto MVC:</em></p>
 <pre><code class="language-xml">&lt;dependency&gt;
@@ -4283,6 +4284,9 @@ public class ManejadorErroresGlobales {
 &lt;/dependency&gt;
 </code></pre>
 </blockquote>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Por ejemplo, añade un campo oculto a los formularios con un token que será requerido cuando se procese en el servidor. Ese campo distinguirá aquellas peticiones legítimas de las realizadas <a href="tema6/backend/../../tema5/js/vulnerabilidades-csrf.html#token">maliciosamente</a>.</p>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="backend-17"><a class="header" href="#backend-17">Backend</a></h1>
 <h2 id="spring-11"><a class="header" href="#spring-11">Spring</a></h2>
 <h3 id="seguridad-1"><a class="header" href="#seguridad-1">Seguridad</a></h3>

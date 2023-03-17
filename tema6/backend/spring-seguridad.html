@@ -154,7 +154,7 @@
                         <h1 id="backend"><a class="header" href="#backend">Backend</a></h1>
 <h2 id="spring"><a class="header" href="#spring">Spring</a></h2>
 <h3 id="seguridad"><a class="header" href="#seguridad">Seguridad</a></h3>
-<p>El módulo de <a href="https://docs.spring.io/spring-security/reference/index.html">Spring Security</a> añade autenticación (identificación del usuario), autorización (control de acceso) y protección frente a vulnerabilidades web como <a href="../../tema5/js/vulnerabilidades-csrf.html">CSRF</a>.</p>
+<p>El módulo de <a href="https://docs.spring.io/spring-security/reference/index.html">Spring Security</a> añade autenticación (identificación del usuario), autorización (control de acceso) y protección frente a vulnerabilidades web como <a href="../../tema5/js/vulnerabilidades-csrf.html">CSRF</a><sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
 <blockquote>
 <p>⁉️ <strong>Ejercicio:</strong> <em>Para habilitar Spring Security añade la siguiente dependencia al proyecto MVC:</em></p>
 <pre><code class="language-xml">&lt;dependency&gt;
@@ -163,6 +163,9 @@
 &lt;/dependency&gt;
 </code></pre>
 </blockquote>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Por ejemplo, añade un campo oculto a los formularios con un token que será requerido cuando se procese en el servidor. Ese campo distinguirá aquellas peticiones legítimas de las realizadas <a href="../../tema5/js/vulnerabilidades-csrf.html#token">maliciosamente</a>.</p>
+</div>
 
                     </main>
 
