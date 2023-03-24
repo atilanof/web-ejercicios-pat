@@ -3996,7 +3996,7 @@ foto.onclick = function() {
 <h2 id="spring-2"><a class="header" href="#spring-2">Spring</a></h2>
 <h3 id="mvc-1"><a class="header" href="#mvc-1">MVC</a></h3>
 <h4 id="ssr"><a class="header" href="#ssr">SSR</a></h4>
-<p>Para generar la presentación en el servidor, normalmente se utiliza un lenguaje para procesar textos. Spring permite configurar uno de entre <a href="https://docs.spring.io/spring-framework/docs/6.0.6/reference/html/web.html#mvc-view">varias librerías</a>. En nuestro caso usaremos <a href="https://www.thymeleaf.org/index.html">Thymeleaf</a>.</p>
+<p>Para generar la presentación en el servidor, normalmente se utiliza un lenguaje para procesar textos. Spring permite configurar uno de entre <a href="https://docs.spring.io/spring-framework/docs/6.0.6/reference/html/web.html#mvc-view">varias librerías</a>. En nuestro caso usaremos <a href="https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html">Thymeleaf</a>.</p>
 <p>Vamos a crear un endpoint/recurso SSR <code>/saludo?nombre=tu-nombre</code> que devuelva un HTML mostrando un párrafo con el texto &quot;¡Hola, tu-nombre!&quot;. Sobre el proyecto MVC generado anteriormente:</p>
 <ol>
 <li>
@@ -4084,7 +4084,7 @@ public class ControladorRest {
 <p>⁉️ <strong>Ejercicio 1:</strong> <em>Compila y ejecuta el proyecto desde el IDE. Utilizando <a href="https://www.postman.com/">Postman</a>, <a href="https://httpie.io/">Httpie</a> u otra aplicación para hacer peticiones HTTP, prueba el API llamando a <code>http://localhost:8080/api/contadores*</code> con el método, path y cuerpo correctos.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 2:</strong> <em>Crea un nuevo endpoint/recurso para que se pueda eliminar un contador utilizando la anotacion <code>@DeleteMapping</code>.</em></p>
+<p>⁉️ <strong>Ejercicio 2:</strong> <em>Crea un nuevo endpoint/recurso para que se pueda eliminar un contador dado utilizando la anotacion <code>@DeleteMapping</code>.</em></p>
 </blockquote>
 <blockquote>
 <p>⁉️ <strong>Ejercicio 3:</strong> <em>¿Qué problema de concurrencia tiene el código anterior? ¿Cómo lo arreglarías?</em></p>
@@ -4453,14 +4453,14 @@ private String propiedadABC;
 <ul>
 <li>Escalar horizontalmente cada funcionalidad en función de su demanda<sup class="footnote-reference"><a href="#1">1</a></sup>.</li>
 <li>Construir cada funcionalidad con la tecnología más adecuada, y evolucionarlas independientemente del resto<sup class="footnote-reference"><a href="#2">2</a></sup>.</li>
-<li>Evitar que los problemas en un microservicio afecten del resto del sistema, el cual puede seguir dando el servicio básico.</li>
+<li>Evitar que los problemas en un microservicio afecten al resto del sistema, el cual puede seguir dando el servicio básico.</li>
 </ul>
 <p><object type="image/svg+xml" data="./files/img/microservices.excalidraw.svg" width="100%"></object></p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Para ello se utilizan <a href="tema6/backend/../../intro/docker/docker.html">contenedores</a> y <a href="tema6/backend/../../intro/docker/orquestacion.html">plataformas de gestión del hardware</a>.</p>
 </div>
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
-<p>Pero manteniendo la definición de sus APIs (contratos con el resto de servicios y clientes).</p>
+<p>Pero manteniendo la definición de sus APIs (&quot;contratos&quot; con el resto de servicios y clientes).</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="backend-26"><a class="header" href="#backend-26">Backend</a></h1>
 <h2 id="despliegue-3"><a class="header" href="#despliegue-3">Despliegue</a></h2>
