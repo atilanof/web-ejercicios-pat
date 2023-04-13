@@ -155,11 +155,11 @@
 <h2 id="spring-data"><a class="header" href="#spring-data">Spring Data</a></h2>
 <h3 id="tests"><a class="header" href="#tests">Tests</a></h3>
 <p>Para hacer tests de integración de JPA se utiliza la anotación <code>@DataJpaTest</code> que automáticamente configura una BD en memoria cuyos datos se resetean en cada test.</p>
-<pre><code class="language-java">@DataJpaTest
-class RepoOperacionTest {
+<pre><code class="language-java">@DataJpaTest class RepoOperacionTest {
   @Autowired RepoOperacion repoOperacion;
 
   @Test void jpaTest() {
+    // Given ...
     Usuario usuario = new Usuario();
     usuario.id = 1L;
     Contador contador = new Contador();
@@ -169,12 +169,12 @@ class RepoOperacionTest {
     operacion.fecha = Timestamp.from(Instant.now());
     operacion.contador = contador;
     operacion.usuario = usuario;
-
+    // When ...
     DataIntegrityViolationException error = null;
     try { 
       repoOperacion.save(operacion); 
     } catch (DataIntegrityViolationException e) { error = e; }
-
+    // Then ...
     assertNotNull(error);
   }
 }

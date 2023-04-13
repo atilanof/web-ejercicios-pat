@@ -158,10 +158,13 @@
 <p>Para probar interfaces web, existen herramientas como <a href="https://www.cypress.io/">Cypress</a> que automatizan interacciones sobre la página a testear. El siguiente código prueba el envío y respuesta de un formulario:</p>
 <pre><code class="language-js">describe('Formulario de contacto', () =&gt; {
   it('al enviar datos correctos muestra feedback positivo', () =&gt; {
+    // Given ...
     cy.visit('http://localhost:8080/contacto');
+    // When ...
     cy.get('#email').type('usuario@email.com');
     cy.get('#message').type('Probando Cypress.io');
     cy.get('input[value=&quot;Enviar&quot;]').click();
+    // Then ...
     cy.contains('p', 'Gracias usuario@email.com, tu mensaje ha sido recibido.');
   });
 });

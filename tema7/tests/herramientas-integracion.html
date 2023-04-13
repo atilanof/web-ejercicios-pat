@@ -158,16 +158,17 @@
 <p>En el caso de Spring Boot, la dependencia <a href="https://docs.spring.io/spring-boot/docs/1.5.7.RELEASE/reference/html/boot-features-testing.html"><code>spring-boot-starter-test</code></a> nos incluye varias librerías que nos facilitan la creación de tests unitarios y de integración. Por ejemplo, <code>@WebMvcTest</code> y <code>MockMvc</code> nos permiten probar los componentes que implementan un endpoint REST sin necesidad de levantar el servidor:</p>
 <pre><code class="language-java">@WebMvcTest(ControladorRest.class)
 class ControladorRestIntegrationTest {
-  @Autowired
-  private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
-  @Test
-  void creaContadorOkTest() throws Exception {
+  @Test void creaContadorOkTest() throws Exception {
+    // Given ...
     String contador = &quot;{\&quot;nombre\&quot;:\&quot;visitas\&quot;,\&quot;valor\&quot;:0}&quot;;
+    // When ...
     this.mockMvc
         .perform(MockMvcRequestBuilders.post(&quot;/api/contadores&quot;)
            .contentType(MediaType.APPLICATION_JSON)
            .content(contador))
+    // Then ...
         .andExpect(MockMvcResultMatchers.status().isCreated())
         .andExpect(MockMvcResultMatchers.content().string(contador));
   }

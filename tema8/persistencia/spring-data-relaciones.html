@@ -159,13 +159,12 @@
 <p>⁉️ <strong>Ejercicio 1:</strong> <em>Implementa en el API un recurso <code>GET /api/contadores/{nombre}/operaciones</code> que devuelva la lista de <code>Operacion</code> cuyo <code>contadorId</code> sea igual al del contador indicado en la petición. Prueba el nuevo endpoint, e indica el inconveniente de la respuesta JSON generada.</em></p>
 </blockquote>
 <p>Para definir las relaciones entre los campos de las entidades se utilizan anotaciones: <code>@ManyToOne</code>, <code>@OneToOne</code>, <code>@ManyToMany</code>, etc. Por ejemplo, para las relaciones de nuestro modelo:</p>
-<pre><code class="language-java">@Entity
-public class Operacion {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
-    @ManyToOne(optional = false) public Usuario usuario;
-    @ManyToOne(optional = false) public Contador contador;
-    @Column(nullable = false) public String tipo;
-    @Column(nullable = false) public Timestamp fecha;
+<pre><code class="language-java">@Entity public class Operacion {
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
+  @ManyToOne(optional = false) public Usuario usuario;
+  @ManyToOne(optional = false) public Contador contador;
+  @Column(nullable = false) public String tipo;
+  @Column(nullable = false) public Timestamp fecha;
 }
 </code></pre>
 <blockquote>

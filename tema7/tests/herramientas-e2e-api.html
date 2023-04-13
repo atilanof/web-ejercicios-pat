@@ -158,21 +158,22 @@
 <p>Para interfaces REST, existen herramientas gráficas como Postman que permiten probar manual y <a href="https://medium.com/better-practices/from-manual-to-automated-testing-the-roadblocks-and-the-journey-6333dfacc5ae">automáticamente</a>. Spring Boot también facilita hacer tests E2E levantando automáticamente el servidor:</p>
 <pre><code class="language-java">@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class ControladorRestE2ETest {
-  @Autowired
-  private final TestRestTemplate restTemplate;
+  @Autowired private final TestRestTemplate restTemplate;
 
-  @Test
-  public void contadorExistenteTest() {
+  @Test public void contadorExistenteTest() {
+    // Given ...
     restTemplate.exchange(
       &quot;http://localhost:8080/api/contadores&quot;, HttpMethod.POST,
       new HttpEntity&lt;&gt;(new ModeloContador(&quot;visitas&quot;, 0L)), ModeloContador.class
     );
-
-    Assertions.assertEquals(
-      HttpStatus.OK,
-      restTemplate.exchange(
-        &quot;http://localhost:8080/api/contadores/visitas&quot;, HttpMethod.GET,
-        HttpEntity.EMPTY, Void.class).getStatusCode());
+    // When ...
+    ResponseEntity&lt;ModeloContador&gt; response = restTemplate.exchange(
+      &quot;http://localhost:8080/api/contadores/visitas&quot;,
+      HttpMethod.GET, HttpEntity.EMPTY, ModeloContador.class);
+    // Then ...
+    Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+    Assertions.assertEquals(&quot;visitas&quot;, response.getBody().nombre());
+    Assertions.assertEquals(0L, response.getBody().valor());    
   }
 }
 </code></pre>

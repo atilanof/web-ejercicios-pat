@@ -9,6 +9,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -26,18 +27,19 @@ class ControladorRestE2ETest {
 
     @Test
     public void contadorExistenteTest() {
-        Assertions.assertEquals(
-                HttpStatus.OK,
-                restTemplate.exchange(
-                        "http://localhost:8080/api/contadores/visitas", HttpMethod.GET,
-                        HttpEntity.EMPTY, Void.class).getStatusCode());
+        ResponseEntity<ModeloContador> response = restTemplate.exchange(
+                "http://localhost:8080/api/contadores/visitas",
+                HttpMethod.GET, HttpEntity.EMPTY, ModeloContador.class);
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assertions.assertEquals("visitas", response.getBody().nombre());
+        Assertions.assertEquals(0L, response.getBody().valor());
     }
 
     @Test
     public void contadorNoExistenteTest() {
-        Assertions.assertEquals(HttpStatus.NOT_FOUND,
-                restTemplate.exchange(
-                        "http://localhost:8080/api/contadores/no-existo", HttpMethod.GET,
-                        HttpEntity.EMPTY, Void.class).getStatusCode());
+        ResponseEntity<Void> response = restTemplate.exchange(
+                "http://localhost:8080/api/contadores/no-existo",
+                HttpMethod.GET, HttpEntity.EMPTY, Void.class);
+        Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 }
