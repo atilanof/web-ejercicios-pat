@@ -4710,18 +4710,19 @@ class ControladorRestE2ETest {
 
   @Test public void contadorExistenteTest() {
     // Given ...
+    String contador = &quot;{\&quot;nombre\&quot;:\&quot;visitas\&quot;,\&quot;valor\&quot;:0}&quot;;
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
     restTemplate.exchange(
       &quot;http://localhost:8080/api/contadores&quot;, HttpMethod.POST,
-      new HttpEntity&lt;&gt;(new ModeloContador(&quot;visitas&quot;, 0L)), ModeloContador.class
-    );
+      new HttpEntity&lt;&gt;(contador, headers), String.class);
     // When ...
-    ResponseEntity&lt;ModeloContador&gt; response = restTemplate.exchange(
+    ResponseEntity&lt;String&gt; response = restTemplate.exchange(
       &quot;http://localhost:8080/api/contadores/visitas&quot;,
-      HttpMethod.GET, HttpEntity.EMPTY, ModeloContador.class);
+      HttpMethod.GET, HttpEntity.EMPTY, String.class);
     // Then ...
     Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-    Assertions.assertEquals(&quot;visitas&quot;, response.getBody().nombre());
-    Assertions.assertEquals(0L, response.getBody().valor());    
+    Assertions.assertEquals(contador, response.getBody());
   }
 }
 </code></pre>
@@ -4808,11 +4809,6 @@ CREATE TABLE OPERACION (
 );
 
 -- Para añadir datos:
-INSERT INTO CONTADOR (ID, NOMBRE, VALOR)
-  VALUES (1, 'visitas', 1);
-INSERT INTO CONTADOR (ID, NOMBRE, VALOR)
-  VALUES (2, 'clicks', 0);
-
 INSERT INTO USUARIO (ID, EMAIL, CREDENCIALES)
   VALUES (1, 'admin@e.m', 'YWRtaW5AZS5tOmFkbWlu');
 INSERT INTO USUARIO (ID, EMAIL, CREDENCIALES)
@@ -4823,6 +4819,11 @@ INSERT INTO USUARIO (ID, EMAIL, CREDENCIALES)
   VALUES (4, 'guest@e.m', 'dXNlckBlLm06dXNlcg==');
 INSERT INTO USUARIO (ID, EMAIL, CREDENCIALES)
   VALUES (5, 'test@e.m', 'dXNlckBlLm06dXNlcg==');
+
+INSERT INTO CONTADOR (ID, NOMBRE, VALOR)
+  VALUES (1, 'visitas', 0);
+INSERT INTO CONTADOR (ID, NOMBRE, VALOR)
+  VALUES (2, 'clicks', 1);
 
 INSERT INTO OPERACION (ID, USUARIO_ID, CONTADOR_ID, TIPO, FECHA)
   VALUES (1, 1, 1, 'creación', '2023-01-01 00:00:00');
@@ -4850,7 +4851,8 @@ DELETE FROM USUARIO
 <pre><code class="language-sql">SELECT USUARIO.EMAIL, OPERACION.TIPO, CONTADOR.NOMBRE
 FROM USUARIO, OPERACION, CONTADOR
 WHERE USUARIO.ID = OPERACION.USUARIO_ID
-AND OPERACION.CONTADOR_ID = CONTADOR.ID;
+AND OPERACION.CONTADOR_ID = CONTADOR.ID
+ORDER BY USUARIO.ID;
 </code></pre>
 <details><summary><em>Diagrama...</em></summary><br>
 <object type="image/svg+xml" data="./files/img/select.excalidraw.svg" width="100%"></object>
@@ -4873,6 +4875,7 @@ AND OPERACION.CONTADOR_ID = CONTADOR.ID;
 FROM USUARIO 
 LEFT JOIN OPERACION ON USUARIO.ID = OPERACION.USUARIO_ID 
 LEFT JOIN CONTADOR ON OPERACION.CONTADOR_ID = CONTADOR.ID
+ORDER BY USUARIO.ID;
 </code></pre>
 <p><object type="image/svg+xml" data="./files/img/join.excalidraw.svg" width="100%"></object></p>
 </details></div>
@@ -5109,8 +5112,8 @@ INSERT INTO usuario (email, credenciales) VALUES ('boss@e.m', 'Basic Ym9zc0BlLm0
 <div style="break-before: page; page-break-before: always;"></div><h1 id="persistencia-13"><a class="header" href="#persistencia-13">Persistencia</a></h1>
 <h2 id="spring-data-8"><a class="header" href="#spring-data-8">Spring Data</a></h2>
 <h3 id="vulnerabilidades-5"><a class="header" href="#vulnerabilidades-5">Vulnerabilidades</a></h3>
-<p>Hay situaciones en las que es mejor no usar JPA<sup class="footnote-reference"><a href="#1">1</a></sup> y, en su lugar, codificar directamente las SQL que necesita el programa. Para enviarlas a la BD, Spring Data nos facilita el cliente JDBC <code>JdbcTemplate</code>.</p>
-<p>En este contexto, una de las vulnerabilidades típicas es el <a href="https://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL">SQL Injection</a>. Ocurre cuando un usuario malicioso introduce en algún lugar del interfaz de la aplicación, un SQL que acaba llegando al código que llama a la BD. A continuación, exploramos esta vulnerabilidad utilizando <code>JdbcTemplate</code> de forma incorrecta y de forma correcta.</p>
+<p>Hay situaciones en las que es mejor no usar JPA<sup class="footnote-reference"><a href="#1">1</a></sup> y, en su lugar, codificar directamente las SQL que necesita nuestro programa. Para enviarlas a la BD, Spring Data nos facilita el cliente JDBC <code>JdbcTemplate</code>.</p>
+<p>En este contexto, una de las vulnerabilidades típicas es el <a href="https://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL">SQL Injection</a>. Ocurre cuando un usuario malicioso introduce, en algún lugar del interfaz de la aplicación, un SQL que acaba llegando al código que llama a la BD. A continuación, exploramos esta vulnerabilidad utilizando <code>JdbcTemplate</code> de forma incorrecta y de forma correcta.</p>
 <pre><code class="language-java">@DataJpaTest class JdbcTemplateTest {
   @Autowired JdbcTemplate jdbc;
   String credencialesIntroducidasPorUsuarioMalicioso = &quot;'credenciales incorrectas' OR ID = 1&quot;;
@@ -5144,7 +5147,7 @@ INSERT INTO usuario (email, credenciales) VALUES ('boss@e.m', 'Basic Ym9zc0BlLm0
 <p>⁉️ <strong>Pregunta:</strong> <em>¿Cómo se te ocurriría explotar la vulnerabilidad SQL Injection? ¿A qué otra vulnerabilidad te recuerda?</em></p>
 </blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Cuando la BD ya existía de antes y tiene un modelo de datos difícil de representar con entidades, cuando hay que usar SQLs específicas para optimizar, etc.</p>
+<p>Por ejemplo, cuando la BD ya existía de antes y tiene un modelo de datos difícil de representar con entidades. O cuando hay que usar SQLs específicas para optimizar el rendimiento.</p>
 </div>
 
                     </main>

@@ -15,10 +15,8 @@ import java.sql.Timestamp;
 @Entity
 public class Operacion {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) public Long id;
-    // @Column(nullable = false) public Long usuarioId;
-    @ManyToOne(optional = false) @OnDelete(action = OnDeleteAction.CASCADE) public Usuario usuario;
-    // @Column(nullable = false) public Long contadorId;
-    @ManyToOne(optional = false) @OnDelete(action = OnDeleteAction.CASCADE) public Contador contador;
+    @Column(nullable = false) public Long usuarioId;
+    @Column(nullable = false) public Long contadorId;
     @Column(nullable = false) public String tipo;
     @Column(nullable = false) public Timestamp fecha;
 }

@@ -154,8 +154,8 @@
                         <h1 id="persistencia"><a class="header" href="#persistencia">Persistencia</a></h1>
 <h2 id="spring-data"><a class="header" href="#spring-data">Spring Data</a></h2>
 <h3 id="vulnerabilidades"><a class="header" href="#vulnerabilidades">Vulnerabilidades</a></h3>
-<p>Hay situaciones en las que es mejor no usar JPA<sup class="footnote-reference"><a href="#1">1</a></sup> y, en su lugar, codificar directamente las SQL que necesita el programa. Para enviarlas a la BD, Spring Data nos facilita el cliente JDBC <code>JdbcTemplate</code>.</p>
-<p>En este contexto, una de las vulnerabilidades típicas es el <a href="https://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL">SQL Injection</a>. Ocurre cuando un usuario malicioso introduce en algún lugar del interfaz de la aplicación, un SQL que acaba llegando al código que llama a la BD. A continuación, exploramos esta vulnerabilidad utilizando <code>JdbcTemplate</code> de forma incorrecta y de forma correcta.</p>
+<p>Hay situaciones en las que es mejor no usar JPA<sup class="footnote-reference"><a href="#1">1</a></sup> y, en su lugar, codificar directamente las SQL que necesita nuestro programa. Para enviarlas a la BD, Spring Data nos facilita el cliente JDBC <code>JdbcTemplate</code>.</p>
+<p>En este contexto, una de las vulnerabilidades típicas es el <a href="https://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL">SQL Injection</a>. Ocurre cuando un usuario malicioso introduce, en algún lugar del interfaz de la aplicación, un SQL que acaba llegando al código que llama a la BD. A continuación, exploramos esta vulnerabilidad utilizando <code>JdbcTemplate</code> de forma incorrecta y de forma correcta.</p>
 <pre><code class="language-java">@DataJpaTest class JdbcTemplateTest {
   @Autowired JdbcTemplate jdbc;
   String credencialesIntroducidasPorUsuarioMalicioso = &quot;'credenciales incorrectas' OR ID = 1&quot;;
@@ -189,7 +189,7 @@
 <p>⁉️ <strong>Pregunta:</strong> <em>¿Cómo se te ocurriría explotar la vulnerabilidad SQL Injection? ¿A qué otra vulnerabilidad te recuerda?</em></p>
 </blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Cuando la BD ya existía de antes y tiene un modelo de datos difícil de representar con entidades, cuando hay que usar SQLs específicas para optimizar, etc.</p>
+<p>Por ejemplo, cuando la BD ya existía de antes y tiene un modelo de datos difícil de representar con entidades. O cuando hay que usar SQLs específicas para optimizar el rendimiento.</p>
 </div>
 
                     </main>
