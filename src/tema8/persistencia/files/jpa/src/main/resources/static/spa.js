@@ -1,9 +1,9 @@
 // Puedes usar esta función para llamar al API REST de tu aplicación
 function peticionApi(ruta, metodo, cuerpo, usuario, clave) {
   return fetch(ruta, {
-    method: metodo,
+    method: metodo || 'GET',
     headers: {
-      'Authorization': 'Basic ' + btoa(usuario + ":" + clave),
+      'Authorization': 'Basic ' + btoa((usuario || '') + ':' + (clave || '')),
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
