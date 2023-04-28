@@ -189,7 +189,7 @@
 <p>⁉️ <strong>Ejercicio 3:</strong> <em>Implementa el método <code>incrementa</code>, primero leyendo (ejercicio 2), y luego guardando (ejercicio 1) la entidad <strong>incrementada</strong>.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 4:</strong> <em>JPA permite utilizar <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query">queries &quot;SQL&quot;</a> para consultas más complejas que no puedan hacerse con los mecanismos anteriores. Para implementar <code>borra</code><sup class="footnote-reference"><a href="#2">2</a></sup>, añade el siguiente método al repositorio, y completa su &quot;SQL&quot; para que borre por nombre del contador: <code>@Query(&quot;SQL&quot;) @Transanctional @Modifying int borraPorNombre(String nombre)</code>.</em></p>
+<p>⁉️ <strong>Ejercicio 4:</strong> <em>JPA permite utilizar SQL para consultas más complejas que no puedan hacerse con los mecanismos anteriores. Para implementar <code>borra</code><sup class="footnote-reference"><a href="#2">2</a></sup>, añade el siguiente método al repositorio, y completa su &quot;SQL&quot; para que borre por nombre del contador: <code>@Query(value = &quot;SQL&quot;, nativeQuery = true) @Transanctional @Modifying int borraPorNombre(String nombre)</code>.</em></p>
 </blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Su valor ha sido inyectado automáticamente por el contenedor de Spring con la implementación automática del repositorio del punto 1.</p>
