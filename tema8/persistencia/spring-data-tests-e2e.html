@@ -157,7 +157,8 @@
 <h4 id="e2e"><a class="header" href="#e2e">E2E</a></h4>
 <p>Para probar todas las capas de la aplicación levantando el servidor y configurando también una BD en memoria, se utilizan la siguientes anotaciones:</p>
 <pre><code class="language-java">@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-@AutoConfigureTestDatabase
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 class ControladorContadoresTest {
   private final TestRestTemplate restTemplate = new TestRestTemplate(&quot;admin@e.m&quot;, &quot;admin&quot;);
 
