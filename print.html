@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="es" class="sidebar-visible no-js light">
+<html lang="es" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Programación de aplicaciones telemáticas</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="Ejercicios y prácticas">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -33,7 +33,7 @@
         <link rel="stylesheet" href="theme/theme.css">
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -63,24 +63,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -90,15 +95,37 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -188,7 +215,7 @@
 <li>
 <p>Basta con una cuenta gratuita, que dispone de 60h mensuales de uso de Codespaces<sup class="footnote-reference"><a href="#1">1</a></sup></p>
 <blockquote>
-<p>⚠️ <strong>Importante</strong>: <em>hay que parar el codespace una vez se deja de usar para evitar consumir minutos innecesariamente. Por defecto tiene un tiempo de inactividad de 30 minutos tras el cual se para automáticamente. Es recomendable reducirlo a 15 minutos<sup class="footnote-reference"><a href="#2">2</a></sup>.</em></p>
+<p>⚠️ <strong>Importante</strong>: <em>hay que parar el Codespace una vez se deja de usar para evitar consumir minutos innecesariamente. Por defecto tiene un tiempo de inactividad de 30 minutos tras el cual se para automáticamente. Es recomendable reducirlo a 15 minutos<sup class="footnote-reference"><a href="#2">2</a></sup>.</em></p>
 </blockquote>
 </li>
 </ul>
@@ -200,7 +227,7 @@
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git-2"><a class="header" href="#git-2">Git</a></h1>
 <h2 id="repositorio"><a class="header" href="#repositorio">Repositorio</a></h2>
-<p>Los repositorios alojan el código junto con la metainformación asociada al histórico de cambios. Github proporciona uno basado en el VCS Git como un servicio en la nube.</p>
+<p>Los repositorios alojan el código junto con la meta-información asociada al histórico de cambios. Github proporciona uno basado en el VCS Git como un servicio en la nube.</p>
 <ol>
 <li>
 <p>Desde tu cuenta personal de Github <a href="https://github.com/new">crea</a> un nuevo repositorio <strong>público</strong> llamado <code>ci-cd</code> inicializado con un fichero <code>README.md</code> .</p>
@@ -1173,7 +1200,7 @@ Content-Length: 293
 &lt;/html&gt;
 </code></pre>
 <blockquote>
-<p>⁉️ <strong>Pregunta:</strong> <em><a href="https://validator.w3.org/nu/#textarea">Valida</a> el HTML anterior ¿Por qué falla? ¿cómo lo arreglarias?</em></p>
+<p>⁉️ <strong>Pregunta:</strong> <em>Copia y pega el HTML anterior en este <a href="https://validator.w3.org/nu/#textarea">validador</a> ¿Por qué falla? ¿cómo lo arreglarias?</em></p>
 </blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Permite saber al navegador qué versión de HTML usa el documento para validar su estructura automáticamente y/o si debe activar modo de retrocompatibilidad con código antiguo.</p>
@@ -1202,7 +1229,7 @@ Content-Length: 293
 </tbody></table>
 </div>
 <blockquote>
-<p>⁉️ <strong>Pregunta:</strong> <em>Los ficheros anteriores están guardados con diferente codificación, que está convenientemente declarada como metainformación en el HTML ¿cuáles son sus codificaciones? ¿por qué solo uno de ellos se ve correctamente?</em></p>
+<p>⁉️ <strong>Pregunta:</strong> <em>Los ficheros anteriores están guardados con diferente codificación, que está convenientemente declarada como meta-información en el HTML ¿cuáles son sus codificaciones? ¿por qué solo uno de ellos se ve correctamente?</em></p>
 </blockquote>
 <blockquote>
 <p>🔍 <strong>Nota:</strong> <em>Intenta ver el código fuente de cada uno de los marcos haciendo click derecho sobre ellos.</em></p>
@@ -4008,7 +4035,7 @@ foto.onclick = function() {
 </li>
 </ul>
 <blockquote>
-<p>⁉️ <strong>Ejercicio:</strong> <em><a href="https://start.spring.io/#!type=maven-project&amp;language=java&amp;platformVersion=3.0.5&amp;packaging=jar&amp;jvmVersion=17&amp;groupId=edu.comillas.icai.gitt.pat.spring&amp;artifactId=mvc&amp;name=mvc&amp;description=MVC&amp;packageName=edu.comillas.icai.gitt.pat.spring.mvc&amp;dependencies=web,thymeleaf">Genera el esqueleto</a> de una aplicación MVC y ábrela en <a href="https://www.jetbrains.com/es-es/idea/">IntelliJ IDEA</a>. Localiza: las dependencias, la lógica de la aplicación, las plantillas para las vistas, los recursos estáticos, y la configuración.</em></p>
+<p>⁉️ <strong>Ejercicio:</strong> <em><a href="https://start.spring.io/#!type=maven-project&amp;language=java&amp;platformVersion=3.1.5&amp;packaging=jar&amp;jvmVersion=17&amp;groupId=edu.comillas.icai.gitt.pat.spring&amp;artifactId=mvc&amp;name=mvc&amp;description=MVC&amp;packageName=edu.comillas.icai.gitt.pat.spring.mvc&amp;dependencies=web,thymeleaf">Genera el esqueleto</a> de una aplicación MVC y ábrela en <a href="https://www.jetbrains.com/es-es/idea/">IntelliJ IDEA</a>. Localiza: las dependencias, la lógica de la aplicación, las plantillas para las vistas, los recursos estáticos, y la configuración.</em></p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="backend-9"><a class="header" href="#backend-9">Backend</a></h1>
 <h2 id="spring-2"><a class="header" href="#spring-2">Spring</a></h2>
@@ -4308,7 +4335,7 @@ public class ManejadorErroresGlobales {
 <p><a href="https://es.wikipedia.org/wiki/Single_Sign-On">Single Sign-On</a> permite que los usuarios solo se tengan que autenticar una vez para utilizar un conjunto de servicios. Utiliza mensajes con formato XML para intercambiar los tokens de autenticación (SAML), siguiendo este flujo: <details><summary><i class="fa fa-picture-o" aria-hidden="true"></i></summary><br><object type="image/svg+xml" data="./files/img/sso.excalidraw.svg" width="100%"></object><br></details></p>
 </div>
 <div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
-<p><a href="https://es.wikipedia.org/wiki/OAuth">Open Authorization</a> permite a los usuarios autorizar a terceras aplicaciones que accedan a sus datos sin proporcionales directamente sus credenciales. Utiliza mensajes con formato JSON para intercambiar los tokens de autenticación (JWT). Usa un mecanismo diferente dependiendo de si el usuario final es una aplicación (client credentials) o una persona (authorization code, cuyo flujo es este: <details><summary><i class="fa fa-picture-o" aria-hidden="true"></i></summary><br><object type="image/svg+xml" data="./files/img/oauth.excalidraw.svg" width="100%"></object><br></details>).</p>
+<p><a href="https://es.wikipedia.org/wiki/OAuth">OAuth</a> permite a los usuarios autorizar a terceras aplicaciones que accedan a sus datos sin proporcionales directamente sus credenciales. Utiliza mensajes con formato JSON para intercambiar los tokens de autenticación (JWT). Usa un mecanismo diferente dependiendo de si el usuario final es una aplicación (client credentials) o una persona (authorization code, cuyo flujo es este: <details><summary><i class="fa fa-picture-o" aria-hidden="true"></i></summary><br><object type="image/svg+xml" data="./files/img/oauth.excalidraw.svg" width="100%"></object><br></details>).</p>
 </div>
 <div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
 <p><a href="https://openid.net/connect/faq/">OpenID Connect</a> es un protocolo que permite identificar usuarios (propósito similar a SSO) utilizando como mecanismo OAuth. Para ello, estandariza las peticiones y el contenido de los JWT para que contengan la información del usuario identificado.</p>
@@ -4555,7 +4582,7 @@ management.endpoint.health.probes.enabled=true
 </li>
 </ul>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>En general, los proyectos suelen tener esta relación de número de tests: <strong>unitarios</strong> (más rápidos y fáciles de hacer/mantener) <strong><code>&gt;</code></strong> <strong>integración</strong> <strong><code>&gt;</code></strong> <strong>E2E</strong> (más lentos y difíciles de hacer/mantener).</p>
+<p>En general, los proyectos suelen tener esta relación de número de tests llamada <a href="https://en.m.wikipedia.org/wiki/Test_automation#Unit,_integration,_and_end-to-end_levels">Pirámide de testing</a>: <strong>unitarios</strong> (más rápidos y fáciles de hacer/mantener) <strong><code>&gt;</code></strong> <strong>integración</strong> <strong><code>&gt;</code></strong> <strong>E2E</strong> (más lentos y difíciles de hacer/mantener).</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tests-2"><a class="header" href="#tests-2">Tests</a></h1>
 <h2 id="características"><a class="header" href="#características">Características</a></h2>
@@ -4916,7 +4943,7 @@ ORDER BY USUARIO.ID;
 <p>Representa <strong>la conexión</strong> (URL, credenciales, etc.) a una base de datos específica usando su driver JDBC. A continuación, vamos a crear un proyecto Spring Data JPA y configurar su base de datos<sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
 <ol>
 <li>
-<p><a href="https://start.spring.io/#!type=maven-project&amp;language=java&amp;platformVersion=3.0.5&amp;packaging=jar&amp;jvmVersion=17&amp;groupId=edu.comillas.icai.gitt.pat.spring&amp;artifactId=jpa&amp;name=jpa&amp;description=JPA&amp;packageName=edu.comillas.icai.gitt.pat.spring.jpa&amp;dependencies=web,data-jpa,h2">Genera el esqueleto</a> del proyecto y ábrelo en IntelliJ.</p>
+<p><a href="https://start.spring.io/#!type=maven-project&amp;language=java&amp;platformVersion=3.1.5&amp;packaging=jar&amp;jvmVersion=17&amp;groupId=edu.comillas.icai.gitt.pat.spring&amp;artifactId=jpa&amp;name=jpa&amp;description=JPA&amp;packageName=edu.comillas.icai.gitt.pat.spring.jpa&amp;dependencies=web,data-jpa,h2">Genera el esqueleto</a> del proyecto y ábrelo en IntelliJ.</p>
 </li>
 <li>
 <p>Añade la siguiente configuración al fichero de propiedades de la aplicación Spring Boot:</p>
