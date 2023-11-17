@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
-        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
@@ -143,9 +142,6 @@
                     <h1 class="menu-title">Programación de aplicaciones telemáticas</h1>
 
                     <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
                         <a href="https://github.com/apicai/web-ejercicios-pat-2023" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
@@ -183,7 +179,7 @@
 <h3 id="repositorios"><a class="header" href="#repositorios">Repositorios</a></h3>
 <p>Representan <strong>las operaciones</strong> de persistencia que se pueden realizar sobre las entidades. El interfaz <code>CrudRepository</code> de Spring Data JPA ya viene con las operaciones básicas para crear, leer, actualizar y borrar (<abbr title="Create Read Update Delete">CRUD</abbr>) su entidad asociada. Para ver cómo se usa, vamos a mejorar el API de contadores para que los guarde en BD:</p>
 <ol>
-<li>Crea el repositorio CRUD de la entidad <code>Contador</code> en un paquete llamado &quot;repositorio&quot;: <a name="crud"></a>
+<li>Crea el repositorio CRUD de la entidad <code>Contador</code> en un paquete llamado &quot;repositorio&quot;:<a name="crud"></a>
 <pre><code class="language-java">public interface RepoContador extends CrudRepository&lt;Contador, Long&gt; {}
 </code></pre>
 </li>
@@ -207,16 +203,16 @@
 </li>
 </ol>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 1:</strong> <em>Implementa el método <code>crea</code> utilizando la operación de guardar entidad de <code>repoContador</code><sup class="footnote-reference"><a href="#1">1</a></sup>. Arranca la aplicación JPA y llama al endpoint del API para crear un contador. Reinicia la aplicación y vuelve a crear el mismo contador. Explica el comportamiento ayudándote de las trazas del servidor.</em></p>
+<p><strong>❓ Ejercicio 1:</strong> <em>Implementa el método <code>crea</code> utilizando la operación de guardar entidad de <code>repoContador</code><sup class="footnote-reference"><a href="#1">1</a></sup>. Arranca la aplicación JPA y llama al endpoint del API para crear un contador. Reinicia la aplicación y vuelve a crear el mismo contador. Explica el comportamiento ayudándote de las trazas del servidor.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 2:</strong> <em>Para implementar el método <code>lee</code> necesitamos consultar por nombre, y <code>RepoContador</code> no tiene esa consulta particular. Para añadir una, basta con crear un <a href="https://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#jpa.query-methods.query-creation">método con nombre específico</a> en el repositorio: <code>Contador findByNombre(String nombre)</code>. Añádelo a <code>RepoContador</code> y úsalo para implementar <code>lee</code>. ¿Cuál sería su <code>select</code> equivalente?</em></p>
+<p><strong>❓ Ejercicio 2:</strong> <em>Para implementar el método <code>lee</code> necesitamos consultar por nombre, y <code>RepoContador</code> no tiene esa consulta particular. Para añadir una, basta con crear un <a href="https://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#jpa.query-methods.query-creation">método con nombre específico</a> en el repositorio: <code>Contador findByNombre(String nombre)</code>. Añádelo a <code>RepoContador</code> y úsalo para implementar <code>lee</code>. ¿Cuál sería su <code>select</code> equivalente?</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 3:</strong> <em>Implementa el método <code>incrementa</code>, primero leyendo (ejercicio 2), y luego guardando (ejercicio 1) la entidad <strong>incrementada</strong>.</em></p>
+<p><strong>❓ Ejercicio 3:</strong> <em>Implementa el método <code>incrementa</code>, primero leyendo (ejercicio 2), y luego guardando (ejercicio 1) la entidad <strong>incrementada</strong>.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 4:</strong> <em>JPA permite utilizar SQL para consultas más complejas que no puedan hacerse con los mecanismos anteriores. Para implementar <code>borra</code><sup class="footnote-reference"><a href="#2">2</a></sup>, añade el siguiente método al repositorio, y completa su &quot;SQL&quot; para que borre por nombre del contador: <code>@Query(value = &quot;SQL&quot;, nativeQuery = true) @Transanctional @Modifying int borraPorNombre(String nombre)</code>.</em></p>
+<p><strong>❓ Ejercicio 4:</strong> <em>JPA permite utilizar SQL para consultas más complejas que no puedan hacerse con los mecanismos anteriores. Para implementar <code>borra</code><sup class="footnote-reference"><a href="#2">2</a></sup>, añade el siguiente método al repositorio, y completa su &quot;SQL&quot; para que borre por nombre del contador: <code>@Query(value = &quot;SQL&quot;, nativeQuery = true) @Transanctional @Modifying int borraPorNombre(String nombre)</code>.</em></p>
 </blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Su valor ha sido inyectado automáticamente por el contenedor de Spring con la implementación automática del repositorio del punto 1.</p>

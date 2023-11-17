@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
-        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
@@ -143,9 +142,6 @@
                     <h1 class="menu-title">Programación de aplicaciones telemáticas</h1>
 
                     <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
                         <a href="https://github.com/apicai/web-ejercicios-pat-2023" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
@@ -205,25 +201,25 @@
 </li>
 </ol>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 1:</strong> <em>Implementa <code>autentica</code> para que devuelva el usuario cuyas credenciales coinciden con las pasadas. En caso de que no haya ninguna coincidencia, lanza la excepción indicada.</em></p>
+<p><strong>❓ Ejercicio 1:</strong> <em>Implementa <code>autentica</code> para que devuelva el usuario cuyas credenciales coinciden con las pasadas. En caso de que no haya ninguna coincidencia, lanza la excepción indicada.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 2:</strong> <em>Implementa <code>crea</code> para que además de guardar el contador nuevo, registre la operación en BD indicando el contador, el usuario, el tipo de operación y su fecha.</em></p>
+<p><strong>❓ Ejercicio 2:</strong> <em>Implementa <code>crea</code> para que además de guardar el contador nuevo, registre la operación en BD indicando el contador, el usuario, el tipo de operación y su fecha.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 3:</strong> <em>Implementa <code>lee</code> para que además de obtener el contador por nombre, registre la operación en BD igual que antes. En caso de que no exista el contador, lanza la excepción indicada.</em></p>
+<p><strong>❓ Ejercicio 3:</strong> <em>Implementa <code>lee</code> para que además de obtener el contador por nombre, registre la operación en BD igual que antes. En caso de que no exista el contador, lanza la excepción indicada.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 4:</strong> <em>Implementa <code>incrementa</code> para que además de actualizar el contador, registre la operación en BD igual que antes.</em></p>
+<p><strong>❓ Ejercicio 4:</strong> <em>Implementa <code>incrementa</code> para que además de actualizar el contador, registre la operación en BD igual que antes.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 5:</strong> <em>Implementa <code>borra</code> para que además de eliminar el contador, registre la operación en BD igual que antes.</em></p>
+<p><strong>❓ Ejercicio 5:</strong> <em>Implementa <code>borra</code> para que además de eliminar el contador, registre la operación en BD igual que antes.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 6:</strong> <em>Modifica <code>ControladorContadores</code> para que utilice <code>ServicioContadores</code>. Para cada recurso del API REST: añade el parámetro <code>@RequestHeader(&quot;Authorization&quot;) String credenciales</code> para autenticar al usuario de la petición, y utiliza los métodos del servicio para implementar su funcionalidad. Prueba el API con autenticación básica: usuario <code>admin@e.m</code> y clave <code>admin</code>.</em></p>
+<p><strong>❓ Ejercicio 6:</strong> <em>Modifica <code>ControladorContadores</code> para que utilice <code>ServicioContadores</code>. Para cada recurso del API REST: añade el parámetro <code>@RequestHeader(&quot;Authorization&quot;) String credenciales</code> para autenticar al usuario de la petición, y utiliza los métodos del servicio para implementar su funcionalidad. Prueba el API con autenticación básica: usuario <code>admin@e.m</code> y clave <code>admin</code>.</em></p>
 </blockquote>
 <blockquote>
-<p>⁉️ <strong>Ejercicio 7:</strong> <em>Obtén la excepción que se produce al crear dos contadores con mismo nombre. Crea un <code>@ExceptionHandler</code> en <code>ControladorContadores</code> para que cuando se produzca retorne un <code>@ResponseStatus(HttpStatus.CONFLICT)</code>.</em></p>
+<p><strong>❓ Ejercicio 7:</strong> <em>Obtén la excepción que se produce al crear dos contadores con mismo nombre. Crea un <code>@ExceptionHandler</code> en <code>ControladorContadores</code> para que cuando se produzca retorne un <code>@ResponseStatus(HttpStatus.CONFLICT)</code>.</em></p>
 </blockquote>
 
                     </main>

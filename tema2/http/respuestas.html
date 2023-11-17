@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
-        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
@@ -143,9 +142,6 @@
                     <h1 class="menu-title">Programación de aplicaciones telemáticas</h1>
 
                     <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
                         <a href="https://github.com/apicai/web-ejercicios-pat-2023" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
@@ -206,7 +202,7 @@ Sec-WebSocket-Version: 13
 
 </code></pre>
 <blockquote>
-<p>⁉️ <strong>Pregunta:</strong> <em>Si tuvieras que implementar un navegador web ¿cómo sabrías interpretar cada uno de los cuerpos de las respuestas anteriores?</em></p>
+<p><strong>❓ Pregunta:</strong> <em>Si tuvieras que implementar un navegador web ¿cómo sabrías interpretar cada uno de los cuerpos de las respuestas anteriores?</em></p>
 </blockquote>
 </li>
 <li>
@@ -218,11 +214,11 @@ Host: github.com
 
 </code></pre>
 <blockquote>
-<p>⁉️ <strong>Pregunta:</strong> <em>¿Para qué otros casos usarías redirecciones?</em></p>
+<p><strong>❓ Pregunta:</strong> <em>¿Para qué otros casos usarías redirecciones?</em></p>
 </blockquote>
 </li>
 <li>
-<p>Los errores <code>4xx</code> corresponden a peticiones incorrectas, y normalmente repetirlas no va a hacer que funcione. <a name="4xx"></a> El ejemplo típico es cuando se solicita un recurso inexistente: <code>404 Not Found</code>. Otro ejemplo ocurre cuando una web solicita credenciales para acceder. Usa este <code>telnet</code> para hacer las siguientes peticiones:</p>
+<p>Los errores <code>4xx</code> corresponden a peticiones incorrectas, y normalmente repetirlas no va a hacer que funcione <a name="4xx"></a>. El ejemplo típico es cuando se solicita un recurso inexistente: <code>404 Not Found</code>. Otro ejemplo ocurre cuando una web solicita credenciales para acceder. Usa este <code>telnet</code> para hacer las siguientes peticiones:</p>
 <pre><code class="language-bash">telnet httpbin.org 80
 </code></pre>
 <pre><code class="language-http">GET /basic-auth/user/pass HTTP/1.0
@@ -233,7 +229,7 @@ Authorization: Basic dXNlcjpwYXNz
 
 </code></pre>
 <blockquote>
-<p>⁉️ <strong>Pregunta:</strong> <em>La autenticacion básica no cifra el usuario y password de manera segura<sup class="footnote-reference"><a href="#2">2</a></sup><a name="basic-auth"></a>. Para asegurar que no se filtren ¿qué otra cosa deberíamos usar con este tipo de autenticación?</em></p>
+<p><strong>❓ Pregunta:</strong> <em>La autenticacion básica no cifra el usuario y password de manera segura<sup class="footnote-reference"><a href="#2">2</a></sup><a name="basic-auth"></a>. Para asegurar que no se filtren ¿qué otra cosa deberíamos usar con este tipo de autenticación?</em></p>
 </blockquote>
 </li>
 <li>

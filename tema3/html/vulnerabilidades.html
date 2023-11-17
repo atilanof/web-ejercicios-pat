@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
-        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
@@ -143,9 +142,6 @@
                     <h1 class="menu-title">Programación de aplicaciones telemáticas</h1>
 
                     <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
                         <a href="https://github.com/apicai/web-ejercicios-pat-2023" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
@@ -182,7 +178,7 @@
 <h2 id="vulnerabilidades"><a class="header" href="#vulnerabilidades">Vulnerabilidades</a></h2>
 <p>HTML Injection consiste en introducir código HTML malicioso en un formulario o parámetro de la URL que luego será utilizado como contenido en la propia web<sup class="footnote-reference"><a href="#1">1</a></sup>. El código malicioso puede consistir en añadir código HTML/JavaScript<sup class="footnote-reference"><a href="#2">2</a></sup> para robar las cookies de sesión. Otro uso malicioso, que no usa JavaScript, es inyectar un <code>iframe</code>, que simula la página de sesión caducada de una web legítima, para que la víctima introduzca nuevamente sus credenciales (que llegarán al servidor del atacante en el que está alojada).</p>
 <p>A continuación vamos a demostrar la vulnerabilidad en una página que procesa el envío de un formulario<sup class="footnote-reference"><a href="#3">3</a></sup>:</p>
-<iframe src="./files/form-xss.html" width="100%" height="235" style="background:white;"></iframe>
+<iframe src="./files/form-xss.html" width="100%" height="165" style="background:white;"></iframe>
 <ol>
 <li>Envía un comentario normal.</li>
 <li>Envía este otro comentario: 
@@ -195,7 +191,7 @@
 </li>
 </ol>
 <blockquote>
-<p>⁉️ <strong>Pregunta:</strong> <em>¿Cómo piensas que se puede arreglar la vulnerabilidad?</em></p>
+<p><strong>❓ Pregunta:</strong> <em>¿Cómo piensas que se puede arreglar la vulnerabilidad?</em></p>
 </blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Para que eso ocurra la aplicación web debe almacenar el contenido malicioso del atacante y/o servirlo a otros usuarios víctimas.</p>
