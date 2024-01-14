@@ -179,7 +179,7 @@
                         <h1 id="persistencia"><a class="header" href="#persistencia">Persistencia</a></h1>
 <h2 id="spring-data"><a class="header" href="#spring-data">Spring Data</a></h2>
 <h3 id="repositorios"><a class="header" href="#repositorios">Repositorios</a></h3>
-<p>Representan <strong>las operaciones</strong> de persistencia que se pueden realizar sobre las entidades. El interfaz <code>CrudRepository</code> de Spring Data JPA ya viene con las operaciones básicas para crear, leer, actualizar y borrar (<abbr title="Create Read Update Delete">CRUD</abbr>) su entidad asociada. Para ver cómo se usa, vamos a mejorar el API de contadores para que los guarde en BD:</p>
+<p>Representan <strong>las operaciones</strong> de persistencia que se pueden realizar sobre las entidades. La interfaz <code>CrudRepository</code> de Spring Data JPA ya viene con las operaciones básicas para crear, leer, actualizar y borrar (<abbr title="Create Read Update Delete">CRUD</abbr>) su entidad asociada. Para ver cómo se usa, vamos a mejorar el API de contadores para que los guarde en BD:</p>
 <ol>
 <li>Crea el repositorio CRUD de la entidad <code>Contador</code> en un paquete llamado &quot;repositorio&quot;:<a name="crud"></a>
 <pre><code class="language-java">public interface RepoContador extends CrudRepository&lt;Contador, Long&gt; {}
