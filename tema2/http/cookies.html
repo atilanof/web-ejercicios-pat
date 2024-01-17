@@ -178,10 +178,16 @@
                     <main>
                         <h1 id="http"><a class="header" href="#http">HTTP</a></h1>
 <h2 id="cookies"><a class="header" href="#cookies">Cookies</a></h2>
-<p>Las cookies son datos creados en el servidor que se envían<sup class="footnote-reference"><a href="#1">1</a></sup> a los navegadores para que los almacenen y reenvíen<sup class="footnote-reference"><a href="#1">1</a></sup> en cada futura petición al mismo servidor (URL). Esos datos pueden contener información de acceso (autenticación), estado (carrito de la compra), configuración (tema L&amp;F), rastreo (publicidad), etc.</p>
-<ol>
-<li>
-<p>Las cookies de sesión se borran cuando se cierra el navegador. Repite los <strong>pasos 1, 2 y 3</strong> de la página anterior, y usa esta respuesta:</p>
+<p>Las cookies son datos creados en el servidor que se envían<sup class="footnote-reference"><a href="#1">1</a></sup> a los navegadores para que los almacenen y reenvíen<sup class="footnote-reference"><a href="#2">2</a></sup> en cada futura petición al mismo servidor (URL). Esos datos pueden contener información de:</p>
+<ul>
+<li><details><summary><strong>Acceso (autenticación) ...</strong></summary><br><object type="image/svg+xml" data="./files/cookies.acceso.svg" width="100%"></object></details>
+</li>
+<li>Estado (carrito de la compra) </li>
+<li><details><summary><strong>Rastreo (publicidad) ...</strong></summary><br><object type="image/svg+xml" data="./files/cookies.rastreo.svg" width="100%"></object></details>
+</li>
+<li>Configuración (tema Look&amp;Feel), etc.</li>
+</ul>
+<p>Las <strong>cookies de sesión</strong> se borran cuando se cierra el navegador. Repite los <strong>pasos 1, 2 y 3</strong> de la página anterior, y usa esta respuesta:</p>
 <pre><code class="language-http">HTTP/1.0 200 OK
 Set-Cookie: mi-cookie-de-sesion=valor
 Content-Length: 0
@@ -191,9 +197,7 @@ Content-Length: 0
 <blockquote>
 <p><strong>❓ Pregunta:</strong> <em>¿En qué casos utilizarías una cookie de sesión?</em></p>
 </blockquote>
-</li>
-<li>
-<p>Las cookies &quot;permanentes&quot; las deja de enviar el navegador en la fecha indicada por el servidor. Repite los pasos para enviar esta respuesta:</p>
+<p>Las <strong>cookies &quot;permanentes&quot;</strong> las deja de enviar el navegador en la fecha indicada por el servidor. Repite los pasos para enviar esta respuesta:</p>
 <pre><code class="language-http">HTTP/1.0 200 OK
 Set-Cookie: mi-cookie-permanente=valor; Max-Age=60
 Content-Length: 0
@@ -203,9 +207,7 @@ Content-Length: 0
 <blockquote>
 <p><strong>❓ Pregunta:</strong> <em>¿En qué casos utilizarías una cookie permanente?</em></p>
 </blockquote>
-</li>
-<li>
-<p>Además de la caducidad, una cookie puede tener otras características, muchas de ellas relacionadas con su seguridad<sup class="footnote-reference"><a href="#2">2</a></sup><a name="httponly"></a>. Repite los <strong>3 pasos iniciales</strong> y envía esta respuesta:</p>
+<p>Además de la caducidad, una cookie puede tener otras características, muchas de ellas relacionadas con su seguridad<sup class="footnote-reference"><a href="#3">3</a></sup><a name="httponly"></a>. Repite los <strong>3 pasos iniciales</strong> y envía esta respuesta:</p>
 <pre><code class="language-http">HTTP/1.1 200 OK
 Set-Cookie: mi-cookie-en-otro-path=valor; Path=/ruta
 Set-Cookie: mi-cookie-segura=valor; Secure
@@ -221,15 +223,16 @@ Content-Length: 293
 <blockquote>
 <p><strong>❓ Pregunta:</strong> <em>¿Por qué JS no ve todas las cookies? ¿Cuándo se reenvía la cookie con <code>Path</code> al servidor? ¿Se reenvían al servidor las cookies creadas con JS?</em></p>
 </blockquote>
-</li>
-</ol>
 <blockquote>
 <p>⚠️ <strong>Importante</strong>: <em>para o borra el <a href="https://github.com/codespaces">Codespace</a> al terminar de usarlo.</em></p>
 </blockquote>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Como cabeceras HTTP de la respuesta o de la petición.</p>
+<p>Como cabeceras HTTP de la respuesta.</p>
 </div>
 <div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>Como cabeceras HTTP de la petición.</p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
 <p>El robo de las cookies de acceso es un problema típico en el mundo web.</p>
 </div>
 
