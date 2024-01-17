@@ -181,12 +181,6 @@
 <p>Los cambios en Git se realizan utilizando ramas. Las ramas representan una línea de desarrollo independiente dentro del repo. La rama inicial suele llamarse <code>main</code><sup class="footnote-reference"><a href="#1">1</a></sup>. Los cambios en una rama se realizan en 3 pasos: <code>① add ➜ ② commit ➜ ③ push</code>.</p>
 <ol>
 <li>
-<p>Desde tu cuenta personal de Github <a href="https://github.com/new">crea</a> un nuevo repositorio <strong>público</strong> llamado <code>ci-cd</code> inicializado con un fichero <code>README.md</code>.</p>
-</li>
-<li>
-<p>Desde el nuevo repo <code>https://github.com/{usuario}/ci-cd</code> crea un nuevo Codespace. </p>
-</li>
-<li>
 <p>Desde el Codespace anterior y usando el editor crea un nuevo directorio <code>src</code> y un fichero <code>index.html</code> dentro de él con el siguiente contenido:</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -197,28 +191,42 @@
 </li>
 <li>
 <p>Desde el terminal del Codespace teclea:</p>
-<pre><code class="language-bash">git status
+<pre><code class="language-bash">cd /workspaces/ci-cd
+git status
 git add .
 git commit -m &quot;feat: homepage&quot;
 git push origin main
 </code></pre>
 <p>Comprueba que el nuevo directorio/fichero se encuentra ahora en el repo remoto (<code>https://github.com/{usuario}/ci-cd</code>).</p>
 <blockquote>
+<p>🔍 <strong>Nota:</strong> <em>En este caso no hemos necesitado hacer el <code>clone</code> puesto que el Codespace de este repo ya lo ha hecho automáticamente por nosotros.</em></p>
+</blockquote>
+<blockquote>
 <p><strong>❓ Pregunta 1:</strong> <em>¿Para qué han valido cada uno de los comandos <code>git</code> anteriores?</em></p>
 </blockquote>
 </li>
 <li>
-<p>Intenta repetir los pasos anteriores pero sobre el repositorio que vimos en la página anterior:</p>
-<pre><code class="language-bash">cd /tmp
-git clone https://github.com/gitt-3-pat/p1
-cd p1
+<p>Intenta hacer cambios sobre el repo <code>p1</code> que vimos en la página anterior:</p>
+<pre><code class="language-bash">cd /workspaces/p1
 touch nuevo.txt
 git add .
 git commit -m &quot;feat: nuevo fichero&quot;
 git push origin main
 </code></pre>
 <blockquote>
-<p><strong>❓ Pregunta 2:</strong> <em>Explica por qué ha fallado en este caso, y por qué un <a href="https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">&quot;fork&quot;</a> del repo anterior podría ser una solución</em></p>
+<p><strong>❓ Pregunta 2:</strong> <em>Explica por qué ha fallado en este caso, viendo el resultado de los comandos en el terminal</em></p>
+</blockquote>
+</li>
+<li>
+<p>Repite los pasos anteriores pero sobre el <code>p1-fork</code>:</p>
+<pre><code class="language-bash">cd /workspaces/p1-fork
+touch nuevo.txt
+git add .
+git commit -m &quot;feat: nuevo fichero&quot;
+git push origin main
+</code></pre>
+<blockquote>
+<p><strong>❓ Pregunta 3:</strong> <em>¿Por qué ahora sí ha funcionado?</em></p>
 </blockquote>
 </li>
 </ol>
