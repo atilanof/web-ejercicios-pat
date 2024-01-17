@@ -179,20 +179,20 @@
                         <h1 id="http"><a class="header" href="#http">HTTP</a></h1>
 <h2 id="prerrequisitos"><a class="header" href="#prerrequisitos">Prerrequisitos</a></h2>
 <p>Para los ejercicios es necesario un terminal con los comandos <code>telnet</code>, <code>openssl</code>, <code>nc</code> y <code>curl</code> disponibles. Para ello, se puede usar un terminal de Github-Codespaces o el de un contenedor de Docker.</p>
+<h3 id="codespaces"><a class="header" href="#codespaces">Codespaces</a></h3>
+<ol>
+<li>Desde tu cuenta en Github <a href="https://github.com/codespaces/new?skip_quickstart=true&amp;machine=basicLinux32gb&amp;repo=525552024&amp;ref=main&amp;geo=EuropeWest">crea</a> un Codespace y arráncalo<sup class="footnote-reference"><a href="#1">1</a></sup></li>
+<li>En el terminal del Codespace ejecuta:
+<pre><code class="language-bash">sudo apt update ; sudo apt install -y telnet netcat
+</code></pre>
+</li>
+</ol>
 <h3 id="docker"><a class="header" href="#docker">Docker</a></h3>
 <ol>
 <li>Arranca <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>.</li>
 <li>Descarga este <a href="./files/Dockerfile">Dockerfile</a>.</li>
 <li>En ese directorio abre un terminal (PowerShell en Windows) y ejecuta:
 <pre><code class="language-bash">docker build -t http . ; docker run -p 8080:8080 --rm -it http
-</code></pre>
-</li>
-</ol>
-<h3 id="codespaces"><a class="header" href="#codespaces">Codespaces</a></h3>
-<ol>
-<li>Desde tu cuenta en Github <a href="https://github.com/codespaces/new?skip_quickstart=true&amp;machine=basicLinux32gb&amp;repo=525552024&amp;ref=main&amp;geo=EuropeWest">crea</a> un Codespace y arráncalo<sup class="footnote-reference"><a href="#1">1</a></sup></li>
-<li>En el terminal del Codespace ejecuta:
-<pre><code class="language-bash">sudo apt update ; sudo apt install -y telnet netcat
 </code></pre>
 </li>
 </ol>
