@@ -186,7 +186,7 @@
 </code></pre>
 </li>
 <li>
-<p>En un navegador web abre o refresca <a href="http://localhost:8080"><code>http://localhost:8080</code></a> si estás usando <strong>Docker</strong>. En caso de usar <strong>Codespaces</strong> utiliza la URL que se indica al ejecutar el comando anterior en el terminal.</p>
+<p>En un navegador web abre o refresca <a href="http://localhost:8080"><code>http://localhost:8080</code></a> si estás usando <strong>Docker</strong>. En caso de usar <strong>Codespaces</strong> utiliza la URL que se indica al ejecutar el comando anterior en el terminal<sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
 </li>
 <li>
 <p>Vuelve al terminal y comprueba que ha llegado la petición.</p>
@@ -280,6 +280,9 @@ WWW-Authenticate: Basic realm=&quot;Mi servidor netcat&quot;
 </blockquote>
 </li>
 </ol>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Otra alternativa al Docker y el Codespace es <a href="https://serverspace.io/es/support/help/how-to-install-ncat-tool-on_windows-and-linux/">instalar <code>netcat</code></a> en tu propio ordenador. Una vez instalado, el comando a ejecutar desde el CMD de Windows es <code>ncat -l 8080</code> y desde el terminal de Mac/Linux <code>nc -l 8080</code>.</p>
+</div>
 
                     </main>
 
