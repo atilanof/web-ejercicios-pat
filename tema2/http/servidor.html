@@ -238,6 +238,7 @@ WWW-Authenticate: Basic realm=&quot;Mi servidor netcat&quot;
 </li>
 <li>
 <p>Vamos a ver cómo el navegador manda los datos de un formulario web. Repite el <strong>paso 1</strong>, rellena el formulario siguiente y envíalo. Si usas Codespaces, sustituye <code>http://localhost:8080</code> en el HTML por la URL proporcionada en el entorno.</p>
+<details><summary>Ayuda si usas Codespaces...</summary><object type="image/gif" data="./files/codespaces.netcat.form.gif" width="100%"></object></details>
 <details onclick='setTimeout(function(){__CPEmbed(".cp-later")},1)'><summary>Formulario...</summary><br>
  <div class="cp-later" data-height="370" data-theme-id="light" data-default-tab="html,result" data-editable="true" data-prefill style="opacity:0">
  <pre data-lang="html">&lt;form id="myForm" action="http://localhost:8080" method="post">
@@ -281,7 +282,7 @@ WWW-Authenticate: Basic realm=&quot;Mi servidor netcat&quot;
 </li>
 </ol>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Otra alternativa al Docker y el Codespace es <a href="https://serverspace.io/es/support/help/how-to-install-ncat-tool-on_windows-and-linux/">instalar <code>netcat</code></a> en tu propio ordenador. Una vez instalado, el comando a ejecutar desde el CMD de Windows es <code>ncat -l 8080</code> y desde el terminal de Mac/Linux <code>nc -l 8080</code>.</p>
+<p>Otra alternativa al Docker y el Codespace es <a href="https://nmap.org/download">instalar Nmap</a> en tu propio ordenador. Una vez instalado, el comando a ejecutar desde el CMD de Windows es <code>ncat -l 8080</code> y desde el terminal de Mac/Linux <code>nc -l 8080</code>. En el navegador usarás <a href="http://localhost:8080">http://localhost:8080</a>.</p>
 </div>
 
                     </main>
